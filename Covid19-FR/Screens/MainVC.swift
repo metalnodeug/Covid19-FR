@@ -12,7 +12,8 @@ class MainVC: UIViewController {
 
     let flagImageView = UIImageView()
     let logoImageView = UIImageView()
-    let entryTextField = UITextField()
+    let textLabel = UILabel()
+    let entryPickerView = UIPickerView()
     let actionButton = UIButton()
 
     let department = Department()
@@ -26,6 +27,8 @@ class MainVC: UIViewController {
     private func configureUI() {
         configure_flagImageView()
         configure_logoImageView()
+        configure_textLabel()
+        configure_entryPickerView()
         configure_actionButton()
     }
 
@@ -50,10 +53,42 @@ class MainVC: UIViewController {
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            logoImageView.topAnchor.constraint(equalTo: flagImageView.bottomAnchor, constant: 80),
+            logoImageView.topAnchor.constraint(equalTo: flagImageView.bottomAnchor, constant: 50),
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logoImageView.heightAnchor.constraint(equalToConstant: 200),
             logoImageView.widthAnchor.constraint(equalTo: logoImageView.heightAnchor)
+        ])
+    }
+
+    private func configure_textLabel() {
+        view.addSubview(textLabel)
+        textLabel.translatesAutoresizingMaskIntoConstraints = false
+        textLabel.text = "Veuillez selectionner un département:"
+        textLabel.numberOfLines = 0
+        textLabel.font = UIFont.boldSystemFont(ofSize: 17)
+
+        NSLayoutConstraint.activate([
+            textLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 20),
+            textLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            textLabel.heightAnchor.constraint(equalToConstant: 34),
+            textLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            textLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+        ])
+    }
+
+    private func configure_entryPickerView() {
+        view.addSubview(entryPickerView)
+        entryPickerView.translatesAutoresizingMaskIntoConstraints = false
+        entryPickerView.delegate = self
+        entryPickerView.dataSource = self
+        entryPickerView.selectRow(67, inComponent: 0, animated: false)
+
+        NSLayoutConstraint.activate([
+            entryPickerView.topAnchor.constraint(equalTo: textLabel.bottomAnchor, constant: 10),
+            entryPickerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            entryPickerView.heightAnchor.constraint(equalToConstant: 150),
+            entryPickerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            entryPickerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
         ])
     }
 
@@ -68,7 +103,7 @@ class MainVC: UIViewController {
         actionButton.addTarget(self, action: #selector(searchAction), for: .touchUpInside)
 
         NSLayoutConstraint.activate([
-            actionButton.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 50),
+            actionButton.topAnchor.constraint(equalTo: entryPickerView.bottomAnchor, constant: 10),
             actionButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             actionButton.heightAnchor.constraint(equalToConstant: 50),
             actionButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 80),
@@ -81,6 +116,27 @@ class MainVC: UIViewController {
         for (key, value) in department.code.sorted(by: <) {
             print("\(key) - \(value)")
         }
+    }
+
+}
+
+extension MainVC: UIPickerViewDelegate, UIPickerViewDataSource {
+
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return department.code.count
+    }
+
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        let value = "\(department.code[row].index) - \(department.code[row].name)"
+        return value
+    }
+
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print(department.code[row].name)
     }
 
 }
