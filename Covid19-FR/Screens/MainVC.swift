@@ -54,7 +54,7 @@ class MainVC: UIViewController {
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            logoImageView.topAnchor.constraint(equalTo: flagImageView.bottomAnchor, constant: 50),
+            logoImageView.topAnchor.constraint(equalTo: flagImageView.bottomAnchor, constant: 20),
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logoImageView.heightAnchor.constraint(equalToConstant: 200),
             logoImageView.widthAnchor.constraint(equalTo: logoImageView.heightAnchor)
@@ -71,7 +71,7 @@ class MainVC: UIViewController {
         NSLayoutConstraint.activate([
             textLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 20),
             textLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            textLabel.heightAnchor.constraint(equalToConstant: 34),
+            textLabel.heightAnchor.constraint(equalToConstant: 41),
             textLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             textLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
         ])
