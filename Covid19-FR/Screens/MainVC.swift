@@ -22,8 +22,12 @@ class MainVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        navigationController?.setNavigationBarHidden(true, animated: true)
         configureUI()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
 
     private func configureUI() {
@@ -114,18 +118,8 @@ class MainVC: UIViewController {
     }
 
     @objc private func searchAction() {
-        NetworkManager.shared.getCovInformation(for: pickerSelection) { result in
-            
-            switch result {
-                case .success(let covData):
-                    print(covData)
-
-                case .failure(let error):
-                    print(error)
-            }
-        }
+        navigationController?.pushViewController(ShowingCovDataVC(department: pickerSelection), animated: true)
     }
-
 }
 
 extension MainVC: UIPickerViewDelegate, UIPickerViewDataSource {
