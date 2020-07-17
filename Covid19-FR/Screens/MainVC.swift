@@ -17,6 +17,7 @@ class MainVC: UIViewController {
     let actionButton = UIButton()
 
     let department = Department()
+    var pickerSelection: String = "Bas-Rhin"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -112,9 +113,15 @@ class MainVC: UIViewController {
     }
 
     @objc private func searchAction() {
+        NetworkManager.shared.getCovInformation(for: pickerSelection) { result in
+            
+            switch result {
+                case .success(let covData):
+                    print(covData)
 
-        for (key, value) in department.code.sorted(by: <) {
-            print("\(key) - \(value)")
+                case .failure(let error):
+                    print(error)
+            }
         }
     }
 
@@ -136,7 +143,7 @@ extension MainVC: UIPickerViewDelegate, UIPickerViewDataSource {
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print(department.code[row].name)
+        pickerSelection = department.code[row].name
     }
 
 }
