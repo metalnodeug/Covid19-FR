@@ -94,7 +94,7 @@ struct Department {
         ("82", "Tarn-et-Garonne"),
         ("83", "Var"),
         ("84", "Vaucluse"),
-        ("85", "Vandée"),
+        ("85", "Vendée"),
         ("86", "Vienne"),
         ("87", "Haute-Vienne"),
         ("88", "Vosges"),
