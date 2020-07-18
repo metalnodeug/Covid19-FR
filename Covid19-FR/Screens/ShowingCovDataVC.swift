@@ -40,6 +40,8 @@ class ShowingCovDataVC: UIViewController {
         view.addSubview(dateUpdate)
         dateUpdate.translatesAutoresizingMaskIntoConstraints = false
         dateUpdate.textAlignment = .center
+        dateUpdate.textColor = .secondaryLabel
+        dateUpdate.font = UIFont.boldSystemFont(ofSize: 14)
 
         NSLayoutConstraint.activate([
             dateUpdate.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
@@ -80,7 +82,7 @@ class ShowingCovDataVC: UIViewController {
 
     private func updateUI(with covData: CovData) {
         DispatchQueue.main.async {
-            self.dateUpdate.text = covData.liveDataByDepartement[0].date
+            self.dateUpdate.text = "Données mises à jour le: " + covData.liveDataByDepartement[0].date
         }
     }
 }
