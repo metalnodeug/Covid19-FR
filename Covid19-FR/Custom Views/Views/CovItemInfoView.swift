@@ -7,6 +7,10 @@
 
 import UIKit
 
+enum ItemInfoView {
+    case global, scope
+}
+
 class CovItemInfoView: UIView {
 
     let symbolImageView = UIImageView()
@@ -60,7 +64,7 @@ class CovItemInfoView: UIView {
             countLabel.centerYAnchor.constraint(equalTo: symbolImageView.centerYAnchor),
             countLabel.leadingAnchor.constraint(equalTo: symbolImageView.trailingAnchor, constant: 20),
             countLabel.heightAnchor.constraint(equalToConstant: 40),
-            countLabel.widthAnchor.constraint(equalToConstant: 65),
+            countLabel.widthAnchor.constraint(equalToConstant: 75),
 
             titleLabel.centerYAnchor.constraint(equalTo: symbolImageView.centerYAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: countLabel.trailingAnchor, constant: 20),
@@ -75,7 +79,7 @@ class CovItemInfoView: UIView {
             secondary_countLabel.centerYAnchor.constraint(equalTo: secondary_symbolImageView.centerYAnchor),
             secondary_countLabel.leadingAnchor.constraint(equalTo: secondary_symbolImageView.trailingAnchor, constant: 20),
             secondary_countLabel.heightAnchor.constraint(equalToConstant: 40),
-            secondary_countLabel.widthAnchor.constraint(equalToConstant: 65),
+            secondary_countLabel.widthAnchor.constraint(equalToConstant: 75),
 
             secondary_titleLabel.centerYAnchor.constraint(equalTo: secondary_symbolImageView.centerYAnchor),
             secondary_titleLabel.leadingAnchor.constraint(equalTo: secondary_countLabel.trailingAnchor, constant: 20),
@@ -84,40 +88,46 @@ class CovItemInfoView: UIView {
         ])
     }
 
-    func setGlobal(withCount firstElementCount: Int, secondElementCount: Int) {
-        symbolImageView.image = SFSymbols.death
-        titleLabel.text = "Décés"
-        secondary_symbolImageView.image = SFSymbols.heeris
-        secondary_titleLabel.text = "Guéris"
+    func set(with item: ItemInfoView, withCount firstCount: Int, firstDelta: Int?, secondCount: Int, secondDelta: Int?) {
+        switch item {
+            case .global:
+                symbolImageView.image = SFSymbols.death
+                titleLabel.text = "Décés"
+                secondary_symbolImageView.image = SFSymbols.heeris
+                secondary_titleLabel.text = "Guéris"
 
-        countLabel.text = String(firstElementCount)
-        secondary_countLabel.text = String(secondElementCount)
+                countLabel.text = String(firstCount)
+                secondary_countLabel.text = String(secondCount)
+            case .scope:
+                symbolImageView.image = SFSymbols.hospitalising
+                titleLabel.text = "Hospitalisés"
+                secondary_symbolImageView.image = SFSymbols.reanimation
+                secondary_titleLabel.text = "Réanimation"
+
+                countLabel.text = String(firstCount)
+                secondary_countLabel.text = String(secondCount)
+
+                if let firstDelta = firstDelta, let secondDelta = secondDelta {
+                    countLabel.text! += returnDelta(for: firstDelta)
+                    secondary_countLabel.text! += returnDelta(for: secondDelta)
+                }
+        }
     }
 
-    func setScope(withCount firstElementCount: Int, firstElementCountDelta: Int, secondElementCount: Int, secondElementCountDelta: Int) {
-        var firstDelta = ""
-        var secondDelta = ""
+    private func returnDelta(for element: Int) -> String {
+        var value: String
 
-        if firstElementCountDelta == 0 {
-            firstDelta = " (=)"
+        if element == 0 {
+            value = " (=)"
+        } else if element > 0 {
+            value = " (+\(element))"
         } else {
-            firstDelta = " (+\(firstElementCountDelta))"
+            value = ""
         }
 
-        if secondElementCountDelta == 0 {
-            secondDelta = " (=)"
-        } else {
-            secondDelta = " (+\(secondElementCountDelta))"
-        }
-
-        symbolImageView.image = SFSymbols.hospitalising
-        titleLabel.text = "Hospitalisés"
-        secondary_symbolImageView.image = SFSymbols.reanimation
-        secondary_titleLabel.text = "Réanimation"
-
-        countLabel.text = String(firstElementCount) + firstDelta
-        secondary_countLabel.text = String(secondElementCount) + secondDelta
+        return value
     }
+
 }
 
 

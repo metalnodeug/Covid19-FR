@@ -102,7 +102,7 @@ struct Department {
         ("90", "Territoire de Belfort"),
         ("91", "Essonne"),
         ("92", "Hauts-de-Seine"),
-        ("93", "Seine-St-Denis"),
+        ("93", "Seine-Saint-Denis"),
         ("94", "Val-de-Marne"),
         ("95", "Val-D'Oise"),
         ("971", "Guadeloupe"),

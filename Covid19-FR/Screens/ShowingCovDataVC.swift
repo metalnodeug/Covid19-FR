@@ -91,7 +91,11 @@ class ShowingCovDataVC: CovLoadingVC {
             switch result {
             case .success(let covData):
                 print(covData)
+                if !covData.liveDataByDepartement.isEmpty {
                 self.updateUI(with: covData)
+                } else {
+                    print("error")
+                }
 
             case .failure(let error):
                 print(error)
@@ -101,9 +105,16 @@ class ShowingCovDataVC: CovLoadingVC {
 
     private func updateUI(with covData: CovData) {
         DispatchQueue.main.async {
+            let death = covData.liveDataByDepartement[0].deces
+            let hospitalising = covData.liveDataByDepartement[0].hospitalises
+            let heeris = covData.liveDataByDepartement[0].gueris
+            let reanimation = covData.liveDataByDepartement[0].reanimation
+            let newReanimation = covData.liveDataByDepartement[0].nouvellesReanimations
+            let newHospitalising = covData.liveDataByDepartement[0].nouvellesHospitalisations
+
             self.dateUpdate.text = "Dernière mise à jour le: " + covData.liveDataByDepartement[0].date
-            self.containerView.setGlobal(withCount: covData.liveDataByDepartement[0].deces, secondElementCount: covData.liveDataByDepartement[0].gueris)
-            self.secondary_containerView.setScope(withCount: covData.liveDataByDepartement[0].hospitalises, firstElementCountDelta: covData.liveDataByDepartement[0].nouvellesHospitalisations, secondElementCount: covData.liveDataByDepartement[0].reanimation, secondElementCountDelta: covData.liveDataByDepartement[0].nouvellesReanimations)
+            self.containerView.set(with: .global, withCount: death, firstDelta: nil, secondCount: heeris, secondDelta: nil)
+            self.secondary_containerView.set(with: .scope, withCount: hospitalising, firstDelta: newHospitalising, secondCount: reanimation, secondDelta: newReanimation)
         }
     }
 }
