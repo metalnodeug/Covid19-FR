@@ -10,6 +10,7 @@ import UIKit
 class ShowingCovDataVC: UIViewController {
     var department: String!
     let dateUpdate = UILabel()
+    let containerView = UIView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +32,11 @@ class ShowingCovDataVC: UIViewController {
     private func configureUI() {
         navigationController?.navigationBar.prefersLargeTitles = true
         title = department
+        configure_dateUpdate()
+        configure_containerView()
+    }
 
+    private func configure_dateUpdate() {
         view.addSubview(dateUpdate)
         dateUpdate.translatesAutoresizingMaskIntoConstraints = false
         dateUpdate.textAlignment = .center
@@ -41,6 +46,20 @@ class ShowingCovDataVC: UIViewController {
             dateUpdate.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             dateUpdate.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             dateUpdate.heightAnchor.constraint(equalToConstant: 20)
+        ])
+    }
+
+    private func configure_containerView() {
+        view.addSubview(containerView)
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        containerView.backgroundColor = .secondarySystemBackground
+        containerView.layer.cornerRadius = 10
+
+        NSLayoutConstraint.activate([
+            containerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -15),
+            containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50)
         ])
     }
 
