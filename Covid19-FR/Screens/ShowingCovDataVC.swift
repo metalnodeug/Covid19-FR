@@ -7,10 +7,10 @@
 
 import UIKit
 
-class ShowingCovDataVC: UIViewController {
+class ShowingCovDataVC: CovLoadingVC {
     var department: String!
     let dateUpdate = UILabel()
-    let containerView = UIView()
+    let containerView = CovItemInfoView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,13 +61,16 @@ class ShowingCovDataVC: UIViewController {
             containerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
             containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -15),
-            containerView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50)
+            containerView.heightAnchor.constraint(equalToConstant: 100)
         ])
     }
 
     private func getCovData(for department: String) {
-        NetworkManager.shared.getCovInformation(for: department) { [weak self] result in
+        showLoadingView()
+
+        NetworkManager.shared.getCovDeptInformation(for: department) { [weak self] result in
             guard let self = self else { return }
+            self.dismissLoadingView()
 
             switch result {
             case .success(let covData):
@@ -82,7 +85,8 @@ class ShowingCovDataVC: UIViewController {
 
     private func updateUI(with covData: CovData) {
         DispatchQueue.main.async {
-            self.dateUpdate.text = "Données mises à jour le: " + covData.liveDataByDepartement[0].date
+            self.dateUpdate.text = "Dernière mise à jour le: " + covData.liveDataByDepartement[0].date
+            self.containerView.set(itemInfoType: .global, withCount: covData.liveDataByDepartement[0].deces, secondElementCount: covData.liveDataByDepartement[0].gueris)
         }
     }
 }

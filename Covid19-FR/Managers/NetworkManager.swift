@@ -14,7 +14,7 @@ class NetworkManager {
 
     private init () {}
 
-    func getCovInformation(for department: String, completion: @escaping (Result<CovData, CovError>) -> Void) {
+    func getCovDeptInformation(for department: String, completion: @escaping (Result<CovData, CovError>) -> Void) {
         let endpoint = baseURL + "\(department)"
         let convertedEndpoint = endpoint.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.urlQueryAllowed)!
         print(endpoint)

@@ -11,6 +11,9 @@
 		6F5A9ECC24C2434A000BA52C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5A9ECB24C2434A000BA52C /* NetworkManager.swift */; };
 		6F5A9ECE24C2443C000BA52C /* CovData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5A9ECD24C2443C000BA52C /* CovData.swift */; };
 		6F5A9ED124C245C1000BA52C /* CovError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F5A9ED024C245C1000BA52C /* CovError.swift */; };
+		6F7BDCE824C2E894007B91B5 /* CovLoadingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7BDCE724C2E894007B91B5 /* CovLoadingVC.swift */; };
+		6F7BDCEB24C2EB44007B91B5 /* CovItemInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7BDCEA24C2EB44007B91B5 /* CovItemInfoView.swift */; };
+		6F7BDCED24C2EC27007B91B5 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F7BDCEC24C2EC27007B91B5 /* Constants.swift */; };
 		6F8F3DD524C1DF6A00FB291A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8F3DD424C1DF6A00FB291A /* AppDelegate.swift */; };
 		6F8F3DD724C1DF6A00FB291A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8F3DD624C1DF6A00FB291A /* SceneDelegate.swift */; };
 		6F8F3DDF24C1DF6A00FB291A /* Covid19_FR.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6F8F3DDD24C1DF6A00FB291A /* Covid19_FR.xcdatamodeld */; };
@@ -44,6 +47,9 @@
 		6F5A9ECB24C2434A000BA52C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		6F5A9ECD24C2443C000BA52C /* CovData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovData.swift; sourceTree = "<group>"; };
 		6F5A9ED024C245C1000BA52C /* CovError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovError.swift; sourceTree = "<group>"; };
+		6F7BDCE724C2E894007B91B5 /* CovLoadingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovLoadingVC.swift; sourceTree = "<group>"; };
+		6F7BDCEA24C2EB44007B91B5 /* CovItemInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovItemInfoView.swift; sourceTree = "<group>"; };
+		6F7BDCEC24C2EC27007B91B5 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		6F8F3DD124C1DF6A00FB291A /* Covid19-FR.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Covid19-FR.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6F8F3DD424C1DF6A00FB291A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6F8F3DD624C1DF6A00FB291A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,8 +104,25 @@
 			isa = PBXGroup;
 			children = (
 				6F5A9ED024C245C1000BA52C /* CovError.swift */,
+				6F7BDCEC24C2EC27007B91B5 /* Constants.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		6F7BDCE624C2E861007B91B5 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				6F7BDCE724C2E894007B91B5 /* CovLoadingVC.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		6F7BDCE924C2EB30007B91B5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6F7BDCEA24C2EB44007B91B5 /* CovItemInfoView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		6F8F3DC824C1DF6A00FB291A = {
@@ -185,6 +208,8 @@
 		6F8F3E0E24C1EBBD00FB291A /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				6F7BDCE924C2EB30007B91B5 /* Views */,
+				6F7BDCE624C2E861007B91B5 /* ViewControllers */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -340,7 +365,10 @@
 				6F8F3DDF24C1DF6A00FB291A /* Covid19_FR.xcdatamodeld in Sources */,
 				6F8F3E0824C1DFF600FB291A /* MainVC.swift in Sources */,
 				6F5A9ED124C245C1000BA52C /* CovError.swift in Sources */,
+				6F7BDCEB24C2EB44007B91B5 /* CovItemInfoView.swift in Sources */,
+				6F7BDCE824C2E894007B91B5 /* CovLoadingVC.swift in Sources */,
 				6F9081A124C1F8010045417C /* Department.swift in Sources */,
+				6F7BDCED24C2EC27007B91B5 /* Constants.swift in Sources */,
 				6F49E21F24C259F40095676E /* ShowingCovDataVC.swift in Sources */,
 				6F8F3DD524C1DF6A00FB291A /* AppDelegate.swift in Sources */,
 				6F8F3DD724C1DF6A00FB291A /* SceneDelegate.swift in Sources */,
