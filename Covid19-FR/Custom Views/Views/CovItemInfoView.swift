@@ -7,10 +7,6 @@
 
 import UIKit
 
-enum ItemInfoType {
-    case global, scope
-}
-
 class CovItemInfoView: UIView {
 
     let symbolImageView = UIImageView()
@@ -64,7 +60,7 @@ class CovItemInfoView: UIView {
             countLabel.centerYAnchor.constraint(equalTo: symbolImageView.centerYAnchor),
             countLabel.leadingAnchor.constraint(equalTo: symbolImageView.trailingAnchor, constant: 20),
             countLabel.heightAnchor.constraint(equalToConstant: 40),
-            countLabel.widthAnchor.constraint(equalToConstant: 50),
+            countLabel.widthAnchor.constraint(equalToConstant: 65),
 
             titleLabel.centerYAnchor.constraint(equalTo: symbolImageView.centerYAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: countLabel.trailingAnchor, constant: 20),
@@ -79,7 +75,7 @@ class CovItemInfoView: UIView {
             secondary_countLabel.centerYAnchor.constraint(equalTo: secondary_symbolImageView.centerYAnchor),
             secondary_countLabel.leadingAnchor.constraint(equalTo: secondary_symbolImageView.trailingAnchor, constant: 20),
             secondary_countLabel.heightAnchor.constraint(equalToConstant: 40),
-            secondary_countLabel.widthAnchor.constraint(equalToConstant: 50),
+            secondary_countLabel.widthAnchor.constraint(equalToConstant: 65),
 
             secondary_titleLabel.centerYAnchor.constraint(equalTo: secondary_symbolImageView.centerYAnchor),
             secondary_titleLabel.leadingAnchor.constraint(equalTo: secondary_countLabel.trailingAnchor, constant: 20),
@@ -88,21 +84,41 @@ class CovItemInfoView: UIView {
         ])
     }
 
-    func set(itemInfoType: ItemInfoType, withCount firstElementCount: Int, secondElementCount: Int) {
-        switch itemInfoType {
-        case .global:
-            symbolImageView.image = SFSymbols.death
-            titleLabel.text = "Décés"
-            secondary_symbolImageView.image = SFSymbols.heeris
-            secondary_titleLabel.text = "Guéris"
-        case .scope:
-            symbolImageView.image = SFSymbols.cross
-            titleLabel.text = "Scope"
-            secondary_symbolImageView.image = SFSymbols.death
-            secondary_titleLabel.text = "Décés"
-        }
+    func setGlobal(withCount firstElementCount: Int, secondElementCount: Int) {
+        symbolImageView.image = SFSymbols.death
+        titleLabel.text = "Décés"
+        secondary_symbolImageView.image = SFSymbols.heeris
+        secondary_titleLabel.text = "Guéris"
 
         countLabel.text = String(firstElementCount)
         secondary_countLabel.text = String(secondElementCount)
     }
+
+    func setScope(withCount firstElementCount: Int, firstElementCountDelta: Int, secondElementCount: Int, secondElementCountDelta: Int) {
+        var firstDelta = ""
+        var secondDelta = ""
+
+        if firstElementCountDelta == 0 {
+            firstDelta = " (=)"
+        } else {
+            firstDelta = " (+\(firstElementCountDelta))"
+        }
+
+        if secondElementCountDelta == 0 {
+            secondDelta = " (=)"
+        } else {
+            secondDelta = " (+\(secondElementCountDelta))"
+        }
+
+        symbolImageView.image = SFSymbols.hospitalising
+        titleLabel.text = "Hospitalisés"
+        secondary_symbolImageView.image = SFSymbols.reanimation
+        secondary_titleLabel.text = "Réanimation"
+
+        countLabel.text = String(firstElementCount) + firstDelta
+        secondary_countLabel.text = String(secondElementCount) + secondDelta
+    }
 }
+
+
+

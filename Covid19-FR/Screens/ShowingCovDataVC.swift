@@ -11,6 +11,7 @@ class ShowingCovDataVC: CovLoadingVC {
     var department: String!
     let dateUpdate = UILabel()
     let containerView = CovItemInfoView()
+    let secondary_containerView = CovItemInfoView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +35,7 @@ class ShowingCovDataVC: CovLoadingVC {
         title = department
         configure_dateUpdate()
         configure_containerView()
+        configure_secondary_containerView()
     }
 
     private func configure_dateUpdate() {
@@ -65,6 +67,20 @@ class ShowingCovDataVC: CovLoadingVC {
         ])
     }
 
+    private func configure_secondary_containerView() {
+        view.addSubview(secondary_containerView)
+        secondary_containerView.translatesAutoresizingMaskIntoConstraints = false
+        secondary_containerView.backgroundColor = .secondarySystemBackground
+        secondary_containerView.layer.cornerRadius = 10
+
+        NSLayoutConstraint.activate([
+            secondary_containerView.topAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 20),
+            secondary_containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            secondary_containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -15),
+            secondary_containerView.heightAnchor.constraint(equalToConstant: 100)
+        ])
+    }
+
     private func getCovData(for department: String) {
         showLoadingView()
 
@@ -86,7 +102,8 @@ class ShowingCovDataVC: CovLoadingVC {
     private func updateUI(with covData: CovData) {
         DispatchQueue.main.async {
             self.dateUpdate.text = "Dernière mise à jour le: " + covData.liveDataByDepartement[0].date
-            self.containerView.set(itemInfoType: .global, withCount: covData.liveDataByDepartement[0].deces, secondElementCount: covData.liveDataByDepartement[0].gueris)
+            self.containerView.setGlobal(withCount: covData.liveDataByDepartement[0].deces, secondElementCount: covData.liveDataByDepartement[0].gueris)
+            self.secondary_containerView.setScope(withCount: covData.liveDataByDepartement[0].hospitalises, firstElementCountDelta: covData.liveDataByDepartement[0].nouvellesHospitalisations, secondElementCount: covData.liveDataByDepartement[0].reanimation, secondElementCountDelta: covData.liveDataByDepartement[0].nouvellesReanimations)
         }
     }
 }
