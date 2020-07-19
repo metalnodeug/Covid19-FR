@@ -17,7 +17,8 @@ class ShowingCovDataVC: CovLoadingVC {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         navigationController?.setNavigationBarHidden(false, animated: true)
-        configureUI()
+        navigationController?.navigationBar.prefersLargeTitles = true
+        title = department
         getCovData(for: department)
     }
 
@@ -31,8 +32,6 @@ class ShowingCovDataVC: CovLoadingVC {
     }
 
     private func configureUI() {
-        navigationController?.navigationBar.prefersLargeTitles = true
-        title = department
         configure_dateUpdate()
         configure_containerView()
         configure_secondary_containerView()
@@ -89,32 +88,42 @@ class ShowingCovDataVC: CovLoadingVC {
             self.dismissLoadingView()
 
             switch result {
-            case .success(let covData):
-                print(covData)
-                if !covData.liveDataByDepartement.isEmpty {
-                self.updateUI(with: covData)
-                } else {
-                    print("error")
-                }
+                case .success(let covData):
+                    print(covData)
+                    self.updateUI(with: covData)
 
-            case .failure(let error):
-                print(error)
+                case .failure(let error):
+                    print(error)
             }
         }
     }
 
     private func updateUI(with covData: CovData) {
-        DispatchQueue.main.async {
-            let death = covData.liveDataByDepartement[0].deces
-            let hospitalising = covData.liveDataByDepartement[0].hospitalises
-            let heeris = covData.liveDataByDepartement[0].gueris
-            let reanimation = covData.liveDataByDepartement[0].reanimation
-            let newReanimation = covData.liveDataByDepartement[0].nouvellesReanimations
-            let newHospitalising = covData.liveDataByDepartement[0].nouvellesHospitalisations
+        if covData.liveDataByDepartement.count == 0 {
+            DispatchQueue.main.async {
+                let alertVC = UIAlertController(title: "Erreur", message: "Une erreur est survenue lors de la récupération des données. Il est possible que les données ne soient pas encore mises à jour. Merci de rééssayer ultérieurement.", preferredStyle: .alert)
+                let OKAction = UIAlertAction(title: "OK", style: .default) { _ in
+                    self.navigationController?.popViewController(animated: true)
+                }
+                alertVC.modalPresentationStyle = .overFullScreen
+                alertVC.modalTransitionStyle = .crossDissolve
+                alertVC.addAction(OKAction)
+                self.present(alertVC, animated: true)
+            }
+        } else {
+            DispatchQueue.main.async {
+                let death = covData.liveDataByDepartement[0].deces
+                let hospitalising = covData.liveDataByDepartement[0].hospitalises
+                let heeris = covData.liveDataByDepartement[0].gueris
+                let reanimation = covData.liveDataByDepartement[0].reanimation
+                let newReanimation = covData.liveDataByDepartement[0].nouvellesReanimations
+                let newHospitalising = covData.liveDataByDepartement[0].nouvellesHospitalisations
 
-            self.dateUpdate.text = "Dernière mise à jour le: " + covData.liveDataByDepartement[0].date
-            self.containerView.set(with: .global, withCount: death, firstDelta: nil, secondCount: heeris, secondDelta: nil)
-            self.secondary_containerView.set(with: .scope, withCount: hospitalising, firstDelta: newHospitalising, secondCount: reanimation, secondDelta: newReanimation)
+                self.dateUpdate.text = "Dernière mise à jour le: " + covData.liveDataByDepartement[0].date
+                self.containerView.set(with: .global, withCount: death, firstDelta: nil, secondCount: heeris, secondDelta: nil)
+                self.secondary_containerView.set(with: .scope, withCount: hospitalising, firstDelta: newHospitalising, secondCount: reanimation, secondDelta: newReanimation)
+                self.configureUI()
+            }
         }
     }
 }
