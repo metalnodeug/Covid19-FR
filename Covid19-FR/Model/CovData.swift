@@ -9,23 +9,14 @@ import Foundation
 
 // MARK: - CovData
 struct CovData: Codable {
-    let liveDataByDepartement: [LiveDataByDepartement]
-
-    enum CodingKeys: String, CodingKey {
-        case liveDataByDepartement = "LiveDataByDepartement"
-    }
+    let allDataByDepartement: [AllDataByDepartement]
 }
 
-// MARK: - LiveDataByDepartement
-struct LiveDataByDepartement: Codable {
-    let code, nom, date: String
-    let hospitalises, reanimation, nouvellesHospitalisations, nouvellesReanimations: Int
-    let deces, gueris: Int
-    let source: Source
-    let sourceType: String
-}
-
-// MARK: - Source
-struct Source: Codable {
-    let nom: String
+// MARK: - AllDataByDepartement
+struct AllDataByDepartement: Codable {
+    let date: String
+    let casConfirmes: Int?
+    let deces: Int?
+    let hospitalises, reanimation, gueris, nouvellesHospitalisations: Int?
+    let nouvellesReanimations: Int?
 }

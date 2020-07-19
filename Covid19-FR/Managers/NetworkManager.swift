@@ -10,7 +10,7 @@ import UIKit
 
 class NetworkManager {
     static let shared = NetworkManager()
-    private let baseURL = "https://coronavirusapi-france.now.sh/LiveDataByDepartement?Departement="
+    private let baseURL = "https://coronavirusapi-france.now.sh/AllDataByDepartement?Departement="
 
     private init () {}
 
