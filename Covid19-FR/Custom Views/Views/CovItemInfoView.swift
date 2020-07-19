@@ -38,7 +38,7 @@ class CovItemInfoView: UIView {
 
         NSLayoutConstraint.activate([
             symbolImageView.topAnchor.constraint(equalTo: self.topAnchor),
-            symbolImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            symbolImageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             symbolImageView.widthAnchor.constraint(equalToConstant: 20),
             symbolImageView.heightAnchor.constraint(equalToConstant: 20),
 
