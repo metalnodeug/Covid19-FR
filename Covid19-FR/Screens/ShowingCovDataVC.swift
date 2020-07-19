@@ -9,16 +9,21 @@ import UIKit
 
 class ShowingCovDataVC: CovLoadingVC {
     var department: String!
-    let dateUpdate = UILabel()
-    let containerView = CovItemInfoView()
-    let secondary_containerView = CovItemInfoView()
+
+    let labelItemViewOne = CovSubtitleLabel()
+    let itemViewOne = UIView()
+    let labelItemViewTwo = CovSubtitleLabel()
+    let itemViewTwo = UIView()
+    let dateLabel = CovDateLabel()
+
+    var itemViews: [UIView] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        navigationController?.setNavigationBarHidden(false, animated: true)
-        navigationController?.navigationBar.prefersLargeTitles = true
+        configure_navigationController()
         title = department
+        layoutUI()
         getCovData(for: department)
     }
     
@@ -30,54 +35,10 @@ class ShowingCovDataVC: CovLoadingVC {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    private func configureUI() {
-        configure_dateUpdate()
-        configure_containerView()
-        configure_secondary_containerView()
-    }
-    
-    private func configure_dateUpdate() {
-        view.addSubview(dateUpdate)
-        dateUpdate.translatesAutoresizingMaskIntoConstraints = false
-        dateUpdate.textAlignment = .center
-        dateUpdate.textColor = .secondaryLabel
-        dateUpdate.font = UIFont.boldSystemFont(ofSize: 14)
-        
-        NSLayoutConstraint.activate([
-            dateUpdate.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-            dateUpdate.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            dateUpdate.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            dateUpdate.heightAnchor.constraint(equalToConstant: 20)
-        ])
-    }
-    
-    private func configure_containerView() {
-        view.addSubview(containerView)
-        containerView.translatesAutoresizingMaskIntoConstraints = false
-        containerView.backgroundColor = .secondarySystemBackground
-        containerView.layer.cornerRadius = 10
-        
-        NSLayoutConstraint.activate([
-            containerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
-            containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -15),
-            containerView.heightAnchor.constraint(equalToConstant: 100)
-        ])
-    }
-    
-    private func configure_secondary_containerView() {
-        view.addSubview(secondary_containerView)
-        secondary_containerView.translatesAutoresizingMaskIntoConstraints = false
-        secondary_containerView.backgroundColor = .secondarySystemBackground
-        secondary_containerView.layer.cornerRadius = 10
-        
-        NSLayoutConstraint.activate([
-            secondary_containerView.topAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 20),
-            secondary_containerView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
-            secondary_containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor,constant: -15),
-            secondary_containerView.heightAnchor.constraint(equalToConstant: 100)
-        ])
+
+    private func configure_navigationController() {
+        navigationController?.setNavigationBarHidden(false, animated: true)
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
     private func getCovData(for department: String) {
@@ -89,39 +50,74 @@ class ShowingCovDataVC: CovLoadingVC {
             
             switch result {
                 case .success(let covData):
-                    print(covData)
                     self.updateUI(with: covData)
                     
                 case .failure(let error):
-                    print(error)
+                    self.presentCovAlertOnMainThread(title: CovError.somethingWrong.rawValue, message: error.rawValue, buttonTitle: "Ok")
             }
         }
+    }
+
+    private func layoutUI() {
+        let padding: CGFloat = 20
+        let paddingLabel: CGFloat = 15
+        let itemHeight: CGFloat = 95
+
+        itemViews = [itemViewOne, itemViewTwo, dateLabel, labelItemViewOne, labelItemViewTwo]
+
+        for item in itemViews {
+            view.addSubview(item)
+            item.translatesAutoresizingMaskIntoConstraints = false
+        }
+
+        NSLayoutConstraint.activate([
+            labelItemViewOne.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
+            labelItemViewOne.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            labelItemViewOne.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+
+            itemViewOne.topAnchor.constraint(equalTo: labelItemViewOne.bottomAnchor, constant: paddingLabel),
+            itemViewOne.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            itemViewOne.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            itemViewOne.heightAnchor.constraint(equalToConstant: itemHeight),
+
+            labelItemViewTwo.topAnchor.constraint(equalTo: itemViewOne.bottomAnchor, constant: padding),
+            labelItemViewTwo.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            labelItemViewTwo.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+
+            itemViewTwo.topAnchor.constraint(equalTo: labelItemViewTwo.bottomAnchor, constant: paddingLabel),
+            itemViewTwo.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            itemViewTwo.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            itemViewTwo.heightAnchor.constraint(equalToConstant: itemHeight),
+
+            dateLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -padding),
+            dateLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            dateLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            dateLabel.heightAnchor.constraint(equalToConstant: padding)
+        ])
+    }
+
+    private func configure_UIElements(with covData: CovData) {
+        self.add(childVC: CovGlobalItemVC(covData: covData), to: self.itemViewOne)
+        self.add(childVC: CovScopeItemVC(covData: covData), to: self.itemViewTwo)
+        self.dateLabel.text = "Dernière mise à jour le : " + String(covData.allDataByDepartement.last?.date ?? "??")
+        self.labelItemViewOne.text = "Données depuis le début de l'épidémie :"
+        self.labelItemViewTwo.text = "Données des dernières 24H :"
     }
     
     private func updateUI(with covData: CovData) {
         if covData.allDataByDepartement.count == 0 {
-            DispatchQueue.main.async {
-                let alertVC = UIAlertController(title: "Erreur", message: "Une erreur est survenue lors de la récupération des données. Il est possible que les données ne soient pas encore mises à jour. Merci de rééssayer ultérieurement.", preferredStyle: .alert)
-                let OKAction = UIAlertAction(title: "OK", style: .default) { _ in
-                    self.navigationController?.popViewController(animated: true)
-                }
-                alertVC.modalPresentationStyle = .overFullScreen
-                alertVC.modalTransitionStyle = .crossDissolve
-                alertVC.addAction(OKAction)
-                self.present(alertVC, animated: true)
-            }
+            presentCovAlertOnMainThread(title: "Erreur", message: "Une erreur est survenue lors de la récupération des données. Il est possible que les données ne soient pas encore mises à jour. Merci de rééssayer ultérieurement.", buttonTitle: "Ok")
         } else {
             DispatchQueue.main.async {
-                if let data = covData.allDataByDepartement.last {
-                    if let deces = data.deces, let gueris = data.gueris, let hospitalises = data.hospitalises, let nouvellesHospitalisations = data.nouvellesHospitalisations, let reanimation = data.reanimation, let nouvellesReanimations = data.nouvellesReanimations {
-                        
-                        self.dateUpdate.text = "Dernière mise à jour le: " + data.date
-                        self.containerView.set(with: .global, withCount: deces, firstDelta: nil, secondCount: gueris, secondDelta: nil)
-                        self.secondary_containerView.set(with: .scope, withCount: hospitalises, firstDelta: nouvellesHospitalisations, secondCount: reanimation, secondDelta: nouvellesReanimations)
-                        self.configureUI()
-                    }
-                }
+                self.configure_UIElements(with: covData)
             }
         }
+    }
+
+    private func add(childVC: UIViewController, to containerView: UIView) {
+        addChild(childVC)
+        containerView.addSubview(childVC.view)
+        childVC.view.frame = containerView.bounds
+        childVC.didMove(toParent: self)
     }
 }
