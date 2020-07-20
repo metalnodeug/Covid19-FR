@@ -15,8 +15,5 @@ struct CovData: Codable {
 // MARK: - AllDataByDepartement
 struct AllDataByDepartement: Codable {
     let date: String
-    let casConfirmes: Int?
-    let deces: Int?
-    let hospitalises, reanimation, gueris, nouvellesHospitalisations: Int?
-    let nouvellesReanimations: Int?
+    let hospitalises, reanimation, gueris, deces : Int?
 }

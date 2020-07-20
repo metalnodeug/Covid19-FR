@@ -10,7 +10,6 @@ import Foundation
 
 class MainVC: UIViewController {
 
-    let flagImageView = UIImageView()
     let logoImageView = UIImageView()
     let textLabel = UILabel()
     let entryPickerView = UIPickerView()
@@ -31,25 +30,10 @@ class MainVC: UIViewController {
     }
 
     private func configureUI() {
-        configure_flagImageView()
         configure_logoImageView()
         configure_textLabel()
         configure_entryPickerView()
         configure_actionButton()
-    }
-
-    private func configure_flagImageView() {
-        view.addSubview(flagImageView)
-        flagImageView.translatesAutoresizingMaskIntoConstraints = false
-        flagImageView.image = UIImage(named: "SantePubFR")
-
-        NSLayoutConstraint.activate([
-            flagImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 8),
-            flagImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -8),
-            flagImageView.widthAnchor.constraint(equalToConstant: 60),
-            flagImageView.heightAnchor.constraint(equalToConstant: 34),
-        ])
-
     }
 
     private func configure_logoImageView() {
@@ -59,7 +43,7 @@ class MainVC: UIViewController {
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            logoImageView.topAnchor.constraint(equalTo: flagImageView.bottomAnchor, constant: 20),
+            logoImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             logoImageView.heightAnchor.constraint(equalToConstant: 200),
             logoImageView.widthAnchor.constraint(equalTo: logoImageView.heightAnchor)

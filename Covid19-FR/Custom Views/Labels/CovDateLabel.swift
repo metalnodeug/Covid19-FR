@@ -21,6 +21,7 @@ class CovDateLabel: UILabel {
     private func configure_date() {
         textAlignment = .center
         textColor = .secondaryLabel
+        numberOfLines = 2
         font = UIFont.boldSystemFont(ofSize: 14)
     }
 

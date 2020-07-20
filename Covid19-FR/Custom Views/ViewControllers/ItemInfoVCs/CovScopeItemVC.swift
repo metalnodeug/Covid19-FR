@@ -23,17 +23,25 @@ class CovScopeItemVC: CovItemInfoVC {
     }
 
     private func configureItems() {
-        if let data = covData.allDataByDepartement.last {
-            if let hospitalises = data.hospitalises, let reanimation = data.reanimation {
-                if let nouvellesHospitalisations = data.nouvellesHospitalisations, let nouvellesReanimations = data.nouvellesReanimations {
-                    itemInfoViewOne.set(with: .hospitalized, withCount: hospitalises, delta: nouvellesHospitalisations)
-                    itemInfoViewTwo.set(with: .intensiveCare, withCount: reanimation, delta: nouvellesReanimations)
-                } else {
-                    itemInfoViewOne.set(with: .hospitalized, withCount: hospitalises)
-                    itemInfoViewTwo.set(with: .intensiveCare, withCount: reanimation)
-                }
-            }
+        let data = covData.allDataByDepartement.last
+        let lastValidValue = checkingDataDelta(for: covData)
+        let delta = covData.allDataByDepartement[lastValidValue]
+
+        if let hospitalises = data?.hospitalises, let reanimation = data?.reanimation, let deltaH = delta.hospitalises, let deltaR = delta.reanimation {
+            itemInfoViewOne.set(with: .hospitalized, withCount: hospitalises , delta: deltaH)
+            itemInfoViewTwo.set(with: .intensiveCare, withCount: reanimation , delta: deltaR)
         }
+    }
+
+    private func checkingDataDelta(for data: CovData) -> Int {
+        let countAllData = data.allDataByDepartement.count
+        var index: Int = countAllData - 1
+        
+        repeat {
+            index -= 1
+        } while data.allDataByDepartement[index].hospitalises == nil || data.allDataByDepartement[index].gueris == nil || data.allDataByDepartement[index].deces == nil || data.allDataByDepartement[index].reanimation == nil
+
+        return index
     }
 
 }

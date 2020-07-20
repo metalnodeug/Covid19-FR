@@ -50,7 +50,6 @@ class ShowingCovDataVC: CovLoadingVC {
             
             switch result {
                 case .success(let covData):
-                    print(covData)
                     self.updateUI(with: covData)
                     
                 case .failure(let error):
@@ -93,16 +92,18 @@ class ShowingCovDataVC: CovLoadingVC {
             dateLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -padding),
             dateLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             dateLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-            dateLabel.heightAnchor.constraint(equalToConstant: padding)
+            dateLabel.heightAnchor.constraint(equalToConstant: padding*2)
         ])
     }
 
     private func configure_UIElements(with covData: CovData) {
         self.add(childVC: CovGlobalItemVC(covData: covData), to: self.itemViewOne)
         self.add(childVC: CovScopeItemVC(covData: covData), to: self.itemViewTwo)
-        self.dateLabel.text = "Dernière mise à jour le : " + String(covData.allDataByDepartement.last?.date ?? "??")
+
         self.labelItemViewOne.text = "Données depuis le début de l'épidémie :"
-        self.labelItemViewTwo.text = "Données des dernières 24H :"
+        self.labelItemViewTwo.text = "Evolution sur les dernières 24H :"
+
+        self.dateLabel.text = "Données au : " + String(covData.allDataByDepartement.last?.date ?? "??") + "\n Santé Publique France "
     }
     
     private func updateUI(with covData: CovData) {

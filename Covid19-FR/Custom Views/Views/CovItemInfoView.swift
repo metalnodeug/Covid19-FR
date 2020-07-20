@@ -45,12 +45,12 @@ class CovItemInfoView: UIView {
             countLabel.centerYAnchor.constraint(equalTo: symbolImageView.centerYAnchor),
             countLabel.leadingAnchor.constraint(equalTo: symbolImageView.trailingAnchor, constant: 20),
             countLabel.heightAnchor.constraint(equalToConstant: 40),
-            countLabel.widthAnchor.constraint(equalToConstant: 75),
+            countLabel.widthAnchor.constraint(equalToConstant: 90),
 
             titleLabel.centerYAnchor.constraint(equalTo: symbolImageView.centerYAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: countLabel.trailingAnchor, constant: 20),
             titleLabel.heightAnchor.constraint(equalToConstant: 40),
-            titleLabel.widthAnchor.constraint(equalToConstant: 200),
+            titleLabel.widthAnchor.constraint(equalToConstant: 100),
         ])
     }
 
@@ -64,31 +64,33 @@ class CovItemInfoView: UIView {
             case .healed:
                 symbolImageView.image = SFSymbols.heald
                 titleLabel.text = "Guéris"
+
             case.hospitalized:
                 symbolImageView.image = SFSymbols.hospitalized
                 titleLabel.text = "Hospitalisés"
-                if let delta = delta {
-                    countLabel.text! += returnDelta(for: delta)
-                }
+
             case .intensiveCare:
                 symbolImageView.image = SFSymbols.intensiveCare
                 titleLabel.text = "Réanimation"
-                if let delta = delta {
-                    countLabel.text! += returnDelta(for: delta)
-                }
+        }
+
+        if let delta = delta {
+            countLabel.text! += returnDelta(comparing: count, with: delta)
         }
     }
 
-    private func returnDelta(for element: Int) -> String {
+    private func returnDelta(comparing lastData: Int, with deltaData: Int) -> String {
         var value: String
+        let number = lastData - deltaData
 
-        if element == 0 {
+        if number == 0 {
             value = " (=)"
-        } else if element > 0 {
-            value = " (+\(element))"
+        } else if number > 0 {
+            value = " (+\(number))"
         } else {
-            value = ""
+            value = " (\(number))"
         }
+
         return value
     }
 }
