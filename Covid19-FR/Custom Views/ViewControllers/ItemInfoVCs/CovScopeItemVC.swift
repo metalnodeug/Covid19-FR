@@ -24,24 +24,13 @@ class CovScopeItemVC: CovItemInfoVC {
 
     private func configureItems() {
         let data = covData.allDataByDepartement.last
-        let lastValidValue = checkingDataDelta(for: covData)
+        let lastValidValue = DataHelper.checkingDataDelta(for: covData)
         let delta = covData.allDataByDepartement[lastValidValue]
 
         if let hospitalises = data?.hospitalises, let reanimation = data?.reanimation, let deltaH = delta.hospitalises, let deltaR = delta.reanimation {
             itemInfoViewOne.set(with: .hospitalized, withCount: hospitalises , delta: deltaH)
             itemInfoViewTwo.set(with: .intensiveCare, withCount: reanimation , delta: deltaR)
         }
-    }
-
-    private func checkingDataDelta(for data: CovData) -> Int {
-        let countAllData = data.allDataByDepartement.count
-        var index: Int = countAllData - 1
-        
-        repeat {
-            index -= 1
-        } while data.allDataByDepartement[index].hospitalises == nil || data.allDataByDepartement[index].gueris == nil || data.allDataByDepartement[index].deces == nil || data.allDataByDepartement[index].reanimation == nil
-
-        return index
     }
 
 }
