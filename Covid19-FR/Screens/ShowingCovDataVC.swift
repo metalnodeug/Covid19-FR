@@ -50,6 +50,7 @@ class ShowingCovDataVC: CovLoadingVC {
             
             switch result {
                 case .success(let covData):
+                    print(covData)
                     self.updateUI(with: covData)
                     
                 case .failure(let error):

@@ -24,9 +24,14 @@ class CovScopeItemVC: CovItemInfoVC {
 
     private func configureItems() {
         if let data = covData.allDataByDepartement.last {
-            if let hospitalises = data.hospitalises, let nouvellesHospitalisations = data.nouvellesHospitalisations, let reanimation = data.reanimation, let nouvellesReanimations = data.nouvellesReanimations {
-                itemInfoViewOne.set(with: .hospitalized, withCount: hospitalises, delta: nouvellesHospitalisations)
-                itemInfoViewTwo.set(with: .intensiveCare, withCount: reanimation, delta: nouvellesReanimations)
+            if let hospitalises = data.hospitalises, let reanimation = data.reanimation {
+                if let nouvellesHospitalisations = data.nouvellesHospitalisations, let nouvellesReanimations = data.nouvellesReanimations {
+                    itemInfoViewOne.set(with: .hospitalized, withCount: hospitalises, delta: nouvellesHospitalisations)
+                    itemInfoViewTwo.set(with: .intensiveCare, withCount: reanimation, delta: nouvellesReanimations)
+                } else {
+                    itemInfoViewOne.set(with: .hospitalized, withCount: hospitalises)
+                    itemInfoViewTwo.set(with: .intensiveCare, withCount: reanimation)
+                }
             }
         }
     }
