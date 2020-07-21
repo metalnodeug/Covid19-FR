@@ -22,6 +22,7 @@ class ShowingCovDataVC: CovLoadingVC {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
+        retrieveFavValue()
         configure_navigationController()
         title = department
         layoutUI()
@@ -46,8 +47,53 @@ class ShowingCovDataVC: CovLoadingVC {
     }
 
     @objc private func favButtonAction() {
-        isFavorite = !isFavorite
-        navigationItem.rightBarButtonItem?.image = configureFavoriteButtonImage()
+        let favorite = FavData(code: retrieveDepartmentCode(), name: department )
+
+        if !isFavorite {
+            PersistenceManager.updateWith(favorite: favorite, actionType: .add) { error in
+                self.isFavorite = true
+                self.navigationItem.rightBarButtonItem?.image = self.configureFavoriteButtonImage()
+                print("I have saved")
+            }
+        } else {
+            PersistenceManager.updateWith(favorite: favorite, actionType: .remove) { error in
+                print("I have delete")
+                self.isFavorite = false
+                self.navigationItem.rightBarButtonItem?.image = self.configureFavoriteButtonImage()
+            }
+        }
+    }
+
+    private func retrieveFavValue() {
+        PersistenceManager.retrieveFavorites { [weak self] result in
+            guard let self = self else { return }
+
+            switch result {
+                case .success(let data):
+                    print(data)
+                    for value in data {
+                        if value.name.contains(self.department) {
+                            self.isFavorite = true
+                        }
+                    }
+
+                case .failure(let error):
+                    print(error)
+            }
+        }
+    }
+
+    private func retrieveDepartmentCode() -> String {
+        let array = Department()
+        var departmentCode = ""
+
+        for (code, name) in array.code {
+            if name == department {
+                departmentCode = code
+            }
+        }
+
+        return departmentCode
     }
 
     private func configureFavoriteButtonImage() -> UIImage {
