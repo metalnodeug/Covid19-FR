@@ -17,6 +17,7 @@ class ShowingCovDataVC: CovLoadingVC {
     let dateLabel = CovDateLabel()
 
     var itemViews: [UIView] = []
+    var isFavorite = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,15 +41,20 @@ class ShowingCovDataVC: CovLoadingVC {
         navigationController?.setNavigationBarHidden(false, animated: true)
         navigationController?.navigationBar.prefersLargeTitles = true
 
-        let addFavoriteButton = UIBarButtonItem(image: SFSymbols.heart, style: .plain, target: self, action: #selector(favButtonAction))
+        let addFavoriteButton = UIBarButtonItem(image: configureFavoriteButtonImage(), style: .plain, target: self, action: #selector(favButtonAction))
         navigationItem.rightBarButtonItem = addFavoriteButton
     }
 
     @objc private func favButtonAction() {
-        if navigationItem.rightBarButtonItem?.image == SFSymbols.heart {
-            navigationItem.rightBarButtonItem?.image = UIImage(systemName: "heart.fill")
+        isFavorite = !isFavorite
+        navigationItem.rightBarButtonItem?.image = configureFavoriteButtonImage()
+    }
+
+    private func configureFavoriteButtonImage() -> UIImage {
+        if isFavorite {
+            return UIImage(systemName: "heart.fill")!
         } else {
-            navigationItem.rightBarButtonItem?.image = UIImage(systemName: "heart")
+            return UIImage(systemName: "heart")!
         }
     }
     
