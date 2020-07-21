@@ -72,7 +72,7 @@ class ShowingCovDataVC: CovLoadingVC {
                 case .success(let data):
                     print(data)
                     for value in data {
-                        if value.name.contains(self.department) {
+                        if value.name == self.department {
                             self.isFavorite = true
                         }
                     }
