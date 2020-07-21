@@ -39,6 +39,17 @@ class ShowingCovDataVC: CovLoadingVC {
     private func configure_navigationController() {
         navigationController?.setNavigationBarHidden(false, animated: true)
         navigationController?.navigationBar.prefersLargeTitles = true
+
+        let addFavoriteButton = UIBarButtonItem(image: SFSymbols.heart, style: .plain, target: self, action: #selector(favButtonAction))
+        navigationItem.rightBarButtonItem = addFavoriteButton
+    }
+
+    @objc private func favButtonAction() {
+        if navigationItem.rightBarButtonItem?.image == SFSymbols.heart {
+            navigationItem.rightBarButtonItem?.image = UIImage(systemName: "heart.fill")
+        } else {
+            navigationItem.rightBarButtonItem?.image = UIImage(systemName: "heart")
+        }
     }
     
     private func getCovData(for department: String) {

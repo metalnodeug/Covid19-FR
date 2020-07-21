@@ -13,4 +13,10 @@ enum SFSymbols {
     static let death = UIImage(systemName: "bolt.heart")
     static let hospitalized = UIImage(systemName: "bed.double")
     static let intensiveCare = UIImage(systemName: "waveform.path.ecg.rectangle")
+
+    static let search = UIImage(systemName: "magnifyingglass")
+    static let favorites = UIImage(systemName: "star")
+
+    static let heart = UIImage(systemName: "heart")
+    static let heartFill = UIImage(systemName: "heart.fill")
 }
