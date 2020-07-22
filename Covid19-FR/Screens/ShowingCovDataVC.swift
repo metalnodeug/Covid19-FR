@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 class ShowingCovDataVC: CovLoadingVC {
     var department: String!
@@ -15,6 +16,7 @@ class ShowingCovDataVC: CovLoadingVC {
     let labelItemViewTwo = CovSubtitleLabel()
     let itemViewTwo = UIView()
     let dateLabel = CovDateLabel()
+    let adBanner = GADBannerView()
     
     var itemViews: [UIView] = []
     var isFavorite = false
@@ -137,15 +139,19 @@ class ShowingCovDataVC: CovLoadingVC {
         let paddingLabel: CGFloat = 15
         let itemHeight: CGFloat = 95
         
-        itemViews = [itemViewOne, itemViewTwo, dateLabel, labelItemViewOne, labelItemViewTwo]
+        itemViews = [itemViewOne, itemViewTwo, dateLabel, labelItemViewOne, labelItemViewTwo, adBanner]
         
         for item in itemViews {
             view.addSubview(item)
             item.translatesAutoresizingMaskIntoConstraints = false
         }
+
+        configure_adBanner()
+
+        let iPhoneSizePadding: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 50 : 65
         
         NSLayoutConstraint.activate([
-            labelItemViewOne.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
+            labelItemViewOne.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
             labelItemViewOne.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             labelItemViewOne.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             
@@ -163,11 +169,22 @@ class ShowingCovDataVC: CovLoadingVC {
             itemViewTwo.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             itemViewTwo.heightAnchor.constraint(equalToConstant: itemHeight),
             
-            dateLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -padding),
+            dateLabel.bottomAnchor.constraint(equalTo: adBanner.topAnchor, constant: -5),
             dateLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             dateLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
-            dateLabel.heightAnchor.constraint(equalToConstant: padding*2)
+            dateLabel.heightAnchor.constraint(equalToConstant: padding*2),
+
+            adBanner.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            adBanner.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            adBanner.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            adBanner.heightAnchor.constraint(equalToConstant: iPhoneSizePadding)
         ])
+    }
+
+    private func configure_adBanner() {
+        adBanner.adUnitID = "ca-app-pub-1656351950222808/5839353805"
+        adBanner.rootViewController = self
+        adBanner.load(GADRequest())
     }
     
     private func configure_UIElements(with covData: CovData) {
