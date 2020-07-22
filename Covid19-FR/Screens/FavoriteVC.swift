@@ -57,7 +57,7 @@ class FavoriteVC: CovLoadingVC {
     private func updateUI(with favorites: [FavData]) {
         if favorites.isEmpty {
             DispatchQueue.main.async {
-                self.showEmptyStateView(with: "Veuillez ajouter un département au favoris.", in: self.view)
+                self.showEmptyStateView(with: "Veuillez ajouter un département aux favoris.", in: self.view)
             }
         } else {
             self.favorites = favorites
