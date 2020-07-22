@@ -9,10 +9,10 @@ import Foundation
 import UIKit
 
 enum SFSymbols {
-    static let heald = UIImage(systemName: "pills")
-    static let death = UIImage(systemName: "bolt.heart")
+    static let heald = UIImage(named: "pills")
+    static let death = UIImage(named: "bolt.heart")
     static let hospitalized = UIImage(systemName: "bed.double")
-    static let intensiveCare = UIImage(systemName: "waveform.path.ecg.rectangle")
+    static let intensiveCare = UIImage(named: "waveform.path.ecg.rectangle")
 
     static let search = UIImage(systemName: "magnifyingglass")
     static let favorites = UIImage(systemName: "star")

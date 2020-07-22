@@ -50,7 +50,7 @@ class CovItemInfoView: UIView {
             titleLabel.centerYAnchor.constraint(equalTo: symbolImageView.centerYAnchor),
             titleLabel.leadingAnchor.constraint(equalTo: countLabel.trailingAnchor, constant: 20),
             titleLabel.heightAnchor.constraint(equalToConstant: 40),
-            titleLabel.widthAnchor.constraint(equalToConstant: 100),
+            titleLabel.widthAnchor.constraint(equalToConstant: 95),
         ])
     }
 
