@@ -36,13 +36,12 @@ static let reuseID = "FavoriteCell"
         NSLayoutConstraint.activate([
             name.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             name.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
-            name.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
             name.heightAnchor.constraint(equalToConstant: 60),
 
             code.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             code.leadingAnchor.constraint(equalTo: name.trailingAnchor, constant: 24),
-            code.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -padding),
-            code.heightAnchor.constraint(equalToConstant: 40),
+            code.heightAnchor.constraint(equalToConstant: 60),
+            code.widthAnchor.constraint(equalToConstant: 60),
         ])
     }
 }

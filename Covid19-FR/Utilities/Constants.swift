@@ -22,5 +22,5 @@ enum SFSymbols {
 }
 
 enum CovImages {
-    static let emptyStateLogo = UIImage(named: "")
+    static let emptyStateLogo = UIImage(named: "CovidLogo")
 }

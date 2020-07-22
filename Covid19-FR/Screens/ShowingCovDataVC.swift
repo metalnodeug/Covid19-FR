@@ -109,9 +109,9 @@ class ShowingCovDataVC: CovLoadingVC {
     
     private func configureFavoriteButtonImage() -> UIImage {
         if isFavorite {
-            return UIImage(systemName: "heart.fill")!
+            return SFSymbols.heartFill!
         } else {
-            return UIImage(systemName: "heart")!
+            return SFSymbols.heart!
         }
     }
     

@@ -27,7 +27,6 @@ class CovEmptyStateView: UIView {
     }
 
     private func configure() {
-        addSubview(logoImageView)
         configureMessageLabel()
         configureLogoImageView()
     }
@@ -37,7 +36,7 @@ class CovEmptyStateView: UIView {
         messageLabel.numberOfLines = 3
         messageLabel.textColor = .secondaryLabel
 
-        let labelCenterYConstant: CGFloat = -150
+        let labelCenterYConstant: CGFloat = -170
 
         NSLayoutConstraint.activate([
             messageLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor, constant: labelCenterYConstant),
@@ -48,14 +47,16 @@ class CovEmptyStateView: UIView {
     }
 
     private func configureLogoImageView() {
+        addSubview(logoImageView)
         logoImageView.image = CovImages.emptyStateLogo
+        logoImageView.alpha = 0.7
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
 
         let logoBottomConstant: CGFloat = 40
 
         NSLayoutConstraint.activate([
-            logoImageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1.3),
-            logoImageView.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1.3),
+            logoImageView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1.2),
+            logoImageView.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 1.2),
             logoImageView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 170),
             logoImageView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: logoBottomConstant)
         ])
