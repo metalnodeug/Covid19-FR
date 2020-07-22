@@ -176,8 +176,10 @@ class ShowingCovDataVC: CovLoadingVC {
         
         self.labelItemViewOne.text = "Données depuis le début de l'épidémie :"
         self.labelItemViewTwo.text = "Evolution sur les dernières 24H :"
-        
-        self.dateLabel.text = "Données au : " + String(covData.allDataByDepartement.last?.date ?? "??") + "\n Santé Publique France "
+
+        let date = covData.allDataByDepartement.last?.date.convertToDate()
+        let dateFormat = date?.convertToDateFormat()
+        self.dateLabel.text = "Données au : " + (dateFormat ?? "??") + "\n Santé Publique France "
     }
     
     private func updateUI(with covData: CovData) {
