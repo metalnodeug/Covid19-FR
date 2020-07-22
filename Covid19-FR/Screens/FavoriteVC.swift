@@ -55,16 +55,15 @@ class FavoriteVC: CovLoadingVC {
     }
 
     private func updateUI(with favorites: [FavData]) {
-        if favorites.isEmpty {
-            DispatchQueue.main.async {
+        self.favorites = favorites
+        DispatchQueue.main.async {
+
+            if favorites.isEmpty {
                 self.showEmptyStateView(with: "Veuillez ajouter un département aux favoris.", in: self.view)
-            }
-        } else {
-            self.favorites = favorites
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
+            } else {
                 self.view.bringSubviewToFront(self.tableView)
             }
+            self.tableView.reloadData()
         }
     }
 
@@ -98,7 +97,8 @@ extension FavoriteVC: UITableViewDelegate, UITableViewDataSource {
             guard let self = self else { return }
             guard let error = error else {
                 self.favorites.remove(at: indexPath.row)
-                tableView.deleteRows(at: [indexPath], with: .automatic)
+                tableView.deleteRows(at: [indexPath], with: .left)
+                self.getFavorites()
                 return
             }
             self.presentCovAlertOnMainThread(title: CovError.somethingWrong.rawValue, message: error.rawValue, buttonTitle: "Ok")
