@@ -39,4 +39,10 @@ class CovLoadingVC: UIViewController {
             self.containerLoadingView = nil
         }
     }
+
+    func showEmptyStateView(with message: String, in view: UIView) {
+        let emptyStateView = CovEmptyStateView(message: message)
+        emptyStateView.frame = view.bounds
+        view.addSubview(emptyStateView)
+    }
 }

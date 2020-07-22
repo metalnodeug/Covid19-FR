@@ -20,3 +20,7 @@ enum SFSymbols {
     static let heart = UIImage(systemName: "heart")
     static let heartFill = UIImage(systemName: "heart.fill")
 }
+
+enum CovImages {
+    static let emptyStateLogo = UIImage(named: "")
+}

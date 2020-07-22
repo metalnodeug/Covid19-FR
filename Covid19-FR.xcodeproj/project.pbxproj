@@ -35,6 +35,10 @@
 		6FA26BA424C4E84A001D32C1 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA26BA324C4E84A001D32C1 /* UIViewController+Ext.swift */; };
 		6FA26BA624C4F2D7001D32C1 /* CovSubtitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA26BA524C4F2D7001D32C1 /* CovSubtitleLabel.swift */; };
 		6FAFEB3124C77C8D0004BC58 /* FavData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAFEB3024C77C8D0004BC58 /* FavData.swift */; };
+		6FAFEB3424C78BCA0004BC58 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAFEB3324C78BCA0004BC58 /* FavoriteCell.swift */; };
+		6FAFEB3624C78E7F0004BC58 /* UITableView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAFEB3524C78E7F0004BC58 /* UITableView+Ext.swift */; };
+		6FAFEB3824C7925B0004BC58 /* CovTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAFEB3724C7925B0004BC58 /* CovTitleLabel.swift */; };
+		6FAFEB3A24C7966E0004BC58 /* CovEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAFEB3924C7966E0004BC58 /* CovEmptyStateView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +93,10 @@
 		6FA26BA324C4E84A001D32C1 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 		6FA26BA524C4F2D7001D32C1 /* CovSubtitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovSubtitleLabel.swift; sourceTree = "<group>"; };
 		6FAFEB3024C77C8D0004BC58 /* FavData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavData.swift; sourceTree = "<group>"; };
+		6FAFEB3324C78BCA0004BC58 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
+		6FAFEB3524C78E7F0004BC58 /* UITableView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Ext.swift"; sourceTree = "<group>"; };
+		6FAFEB3724C7925B0004BC58 /* CovTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovTitleLabel.swift; sourceTree = "<group>"; };
+		6FAFEB3924C7966E0004BC58 /* CovEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovEmptyStateView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				6F7BDCEA24C2EB44007B91B5 /* CovItemInfoView.swift */,
+				6FAFEB3924C7966E0004BC58 /* CovEmptyStateView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -244,6 +253,7 @@
 		6F8F3E0E24C1EBBD00FB291A /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				6FAFEB3224C78BAC0004BC58 /* Cells */,
 				6F503F0B24C712F0002CDC7B /* Controllers */,
 				6FA26BA024C4E61E001D32C1 /* Labels */,
 				6F7BDCE924C2EB30007B91B5 /* Views */,
@@ -277,6 +287,7 @@
 			children = (
 				6FA26B9724C4DBEE001D32C1 /* UIView+Ext.swift */,
 				6FA26BA324C4E84A001D32C1 /* UIViewController+Ext.swift */,
+				6FAFEB3524C78E7F0004BC58 /* UITableView+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -296,8 +307,17 @@
 			children = (
 				6FA26BA124C4E64B001D32C1 /* CovDateLabel.swift */,
 				6FA26BA524C4F2D7001D32C1 /* CovSubtitleLabel.swift */,
+				6FAFEB3724C7925B0004BC58 /* CovTitleLabel.swift */,
 			);
 			path = Labels;
+			sourceTree = "<group>";
+		};
+		6FAFEB3224C78BAC0004BC58 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				6FAFEB3324C78BCA0004BC58 /* FavoriteCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -430,12 +450,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				6FA26B9B24C4DFD6001D32C1 /* CovItemInfoVC.swift in Sources */,
+				6FAFEB3A24C7966E0004BC58 /* CovEmptyStateView.swift in Sources */,
 				6F5A9ECC24C2434A000BA52C /* NetworkManager.swift in Sources */,
+				6FAFEB3424C78BCA0004BC58 /* FavoriteCell.swift in Sources */,
 				6F503F0F24C713EF002CDC7B /* FavoriteVC.swift in Sources */,
 				6F8F3DDF24C1DF6A00FB291A /* Covid19_FR.xcdatamodeld in Sources */,
+				6FAFEB3624C78E7F0004BC58 /* UITableView+Ext.swift in Sources */,
 				6F18CCF724C63A5B00BC17F3 /* DataHelper.swift in Sources */,
 				6FA26BA224C4E64B001D32C1 /* CovDateLabel.swift in Sources */,
 				6F8F3E0824C1DFF600FB291A /* MainVC.swift in Sources */,
+				6FAFEB3824C7925B0004BC58 /* CovTitleLabel.swift in Sources */,
 				6F5A9ED124C245C1000BA52C /* CovError.swift in Sources */,
 				6FA26B9D24C4E204001D32C1 /* CovGlobalItemVC.swift in Sources */,
 				6F7BDCEB24C2EB44007B91B5 /* CovItemInfoView.swift in Sources */,
