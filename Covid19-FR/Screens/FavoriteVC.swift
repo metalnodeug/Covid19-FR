@@ -14,11 +14,11 @@ class FavoriteVC: CovLoadingVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureViewController()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        configureViewController()
         getFavorites()
         configure_tableView()
     }
