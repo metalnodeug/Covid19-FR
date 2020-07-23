@@ -16,7 +16,7 @@ class ShowingCovDataVC: CovLoadingVC {
     let labelItemViewTwo = CovSubtitleLabel()
     let itemViewTwo = UIView()
     let dateLabel = CovDateLabel()
-    let adBanner = GADBannerView()
+    var adBanner = GADBannerView()
     
     var itemViews: [UIView] = []
     var isFavorite = false
@@ -147,8 +147,6 @@ class ShowingCovDataVC: CovLoadingVC {
         }
 
         configure_adBanner()
-
-        let iPhoneSizePadding: CGFloat = DeviceTypes.isiPhoneSE || DeviceTypes.isiPhone8Zoomed ? 50 : 65
         
         NSLayoutConstraint.activate([
             labelItemViewOne.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
@@ -177,12 +175,12 @@ class ShowingCovDataVC: CovLoadingVC {
             adBanner.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             adBanner.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             adBanner.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            adBanner.heightAnchor.constraint(equalToConstant: iPhoneSizePadding)
         ])
     }
 
     private func configure_adBanner() {
         adBanner.adUnitID = "ca-app-pub-1656351950222808/5839353805"
+        adBanner.adSize = kGADAdSizeSmartBannerPortrait
         adBanner.rootViewController = self
         adBanner.load(GADRequest())
     }
