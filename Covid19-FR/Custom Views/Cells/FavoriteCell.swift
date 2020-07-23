@@ -11,7 +11,7 @@ class FavoriteCell: UITableViewCell {
 
 static let reuseID = "FavoriteCell"
 
-    let name = CovTitleLabel()
+    let name = CovTitleLabel(textAlignment: .left, fontSize: 20)
     let code = CovTitleLabel()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -31,7 +31,7 @@ static let reuseID = "FavoriteCell"
     private func configure() {
         addSubviews(name,code)
         accessoryType = .disclosureIndicator
-        let padding: CGFloat = 12
+        let padding: CGFloat = 18
 
         NSLayoutConstraint.activate([
             name.centerYAnchor.constraint(equalTo: self.centerYAnchor),

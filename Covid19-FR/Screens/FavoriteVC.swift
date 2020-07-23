@@ -33,7 +33,7 @@ class FavoriteVC: CovLoadingVC {
     private func configure_tableView() {
         view.addSubview(tableView)
         tableView.frame = view.bounds
-        tableView.rowHeight = 80
+        tableView.rowHeight = 70
         tableView.register(FavoriteCell.self, forCellReuseIdentifier: FavoriteCell.reuseID)
         tableView.removedExcessCells()
 
