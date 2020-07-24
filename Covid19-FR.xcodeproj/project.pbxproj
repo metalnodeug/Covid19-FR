@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6F14CA2924CB23000000EF20 /* SettingsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F14CA2824CB23000000EF20 /* SettingsVC.swift */; };
 		6F18CCF724C63A5B00BC17F3 /* DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F18CCF624C63A5B00BC17F3 /* DataHelper.swift */; };
 		6F26730324C8500F00D550C0 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F26730224C8500F00D550C0 /* Date+Ext.swift */; };
 		6F26730524C8501C00D550C0 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F26730424C8501C00D550C0 /* String+Ext.swift */; };
@@ -66,6 +67,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6F14CA2824CB23000000EF20 /* SettingsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsVC.swift; sourceTree = "<group>"; };
 		6F18CCF624C63A5B00BC17F3 /* DataHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataHelper.swift; sourceTree = "<group>"; };
 		6F26730224C8500F00D550C0 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		6F26730424C8501C00D550C0 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 				6F8F3E0724C1DFF600FB291A /* MainVC.swift */,
 				6F49E21E24C259F40095676E /* ShowingCovDataVC.swift */,
 				6F503F0E24C713EF002CDC7B /* FavoriteVC.swift */,
+				6F14CA2824CB23000000EF20 /* SettingsVC.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -501,6 +504,7 @@
 				6F503F1124C727AD002CDC7B /* PersistenceManager.swift in Sources */,
 				6F503F0D24C7131C002CDC7B /* CovTabBarController.swift in Sources */,
 				6F7BDCE824C2E894007B91B5 /* CovLoadingVC.swift in Sources */,
+				6F14CA2924CB23000000EF20 /* SettingsVC.swift in Sources */,
 				6F26730524C8501C00D550C0 /* String+Ext.swift in Sources */,
 				6F9081A124C1F8010045417C /* Department.swift in Sources */,
 				6FAFEB3124C77C8D0004BC58 /* FavData.swift in Sources */,

@@ -12,7 +12,11 @@ class CovTabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         UITabBar.appearance().tintColor = .systemPink
-        viewControllers = [createSearchNavigationController(), createFavoriteNavigationController()]
+        viewControllers = [
+            createSearchNavigationController(),
+            createFavoriteNavigationController(),
+            createSettingsNavigationController()
+        ]
     }
 
     private func createSearchNavigationController() -> UINavigationController {
@@ -26,4 +30,10 @@ class CovTabBarController: UITabBarController {
         favoriteVC.tabBarItem = .init(title: "Favoris", image: SFSymbols.favorites, tag: 1)
         return UINavigationController(rootViewController: favoriteVC)
     }
+
+    private func createSettingsNavigationController() -> UINavigationController {
+          let settingsVC = SettingsVC()
+          settingsVC.tabBarItem = .init(title: "Réglages", image: SFSymbols.settings, tag: 2)
+          return UINavigationController(rootViewController: settingsVC)
+      }
 }

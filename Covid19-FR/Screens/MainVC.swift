@@ -26,6 +26,7 @@ class MainVC: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        title = "Rechercher"
         navigationController?.setNavigationBarHidden(true, animated: true)
     }
 
@@ -86,7 +87,7 @@ class MainVC: UIViewController {
         view.addSubview(actionButton)
         actionButton.translatesAutoresizingMaskIntoConstraints = false
 
-        actionButton.setTitle("Rechercher", for: .normal)
+        actionButton.setTitle("Afficher", for: .normal)
         actionButton.tintColor = .systemBlue
         actionButton.backgroundColor = .systemGreen
         actionButton.layer.cornerRadius = 10

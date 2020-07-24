@@ -16,6 +16,7 @@ enum SFSymbols {
 
     static let search = UIImage(systemName: "magnifyingglass")
     static let favorites = UIImage(systemName: "star")
+    static let settings = UIImage(systemName: "gear")
 
     static let heart = UIImage(systemName: "heart")
     static let heartFill = UIImage(systemName: "heart.fill")
