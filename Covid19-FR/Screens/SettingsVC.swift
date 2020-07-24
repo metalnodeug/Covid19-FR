@@ -82,4 +82,14 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
         cell.set(cellType: settingsCells[indexPath.row])
         return cell
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selection = indexPath.row
+        if selection == 0 {
+            let destVC = PurchaseVC()
+            navigationController?.pushViewController(destVC, animated: true)
+        } else {
+            print("We choose restore")
+        }
+    }
 }

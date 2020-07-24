@@ -48,6 +48,7 @@
 		6FAFEB3824C7925B0004BC58 /* CovTitleLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAFEB3724C7925B0004BC58 /* CovTitleLabel.swift */; };
 		6FAFEB3A24C7966E0004BC58 /* CovEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FAFEB3924C7966E0004BC58 /* CovEmptyStateView.swift */; };
 		6FDE76ED24CB6EA200667767 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDE76EC24CB6EA200667767 /* SettingsCell.swift */; };
+		6FDE76EF24CB7E9A00667767 /* PurchaseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FDE76EE24CB7E9A00667767 /* PurchaseVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +116,7 @@
 		6FAFEB3724C7925B0004BC58 /* CovTitleLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovTitleLabel.swift; sourceTree = "<group>"; };
 		6FAFEB3924C7966E0004BC58 /* CovEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovEmptyStateView.swift; sourceTree = "<group>"; };
 		6FDE76EC24CB6EA200667767 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
+		6FDE76EE24CB7E9A00667767 /* PurchaseVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PurchaseVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,6 +295,7 @@
 				6F49E21E24C259F40095676E /* ShowingCovDataVC.swift */,
 				6F503F0E24C713EF002CDC7B /* FavoriteVC.swift */,
 				6F14CA2824CB23000000EF20 /* SettingsVC.swift */,
+				6FDE76EE24CB7E9A00667767 /* PurchaseVC.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -501,6 +504,7 @@
 				6F8F3E0824C1DFF600FB291A /* MainVC.swift in Sources */,
 				6FAFEB3824C7925B0004BC58 /* CovTitleLabel.swift in Sources */,
 				6F5A9ED124C245C1000BA52C /* CovError.swift in Sources */,
+				6FDE76EF24CB7E9A00667767 /* PurchaseVC.swift in Sources */,
 				6FA26B9D24C4E204001D32C1 /* CovGlobalItemVC.swift in Sources */,
 				6F7BDCEB24C2EB44007B91B5 /* CovItemInfoView.swift in Sources */,
 				6FA26BA424C4E84A001D32C1 /* UIViewController+Ext.swift in Sources */,
