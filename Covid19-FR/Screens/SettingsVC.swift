@@ -10,11 +10,13 @@ import UIKit
 class SettingsVC: UIViewController {
 
     let versionLabel = UILabel()
+    let settingsTableView = UITableView()
+    let settingsCells: [CellType] = [.purchase,.restore]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureViewController()
-        configure_versionLabel()
+        configure_UI()
     }
     
     private func configureViewController() {
@@ -23,6 +25,11 @@ class SettingsVC: UIViewController {
            navigationController?.navigationBar.prefersLargeTitles = true
            title = "Réglages"
        }
+
+    private func configure_UI() {
+        configure_versionLabel()
+        configure_settingsTableView()
+    }
 
     private func configure_versionLabel() {
         view.addSubview(versionLabel)
@@ -43,4 +50,36 @@ class SettingsVC: UIViewController {
         ])
     }
 
+    private func configure_settingsTableView() {
+        view.addSubview(settingsTableView)
+        settingsTableView.translatesAutoresizingMaskIntoConstraints = false
+        settingsTableView.frame = view.bounds
+        settingsTableView.rowHeight = 50
+        settingsTableView.register(SettingsCell.self, forCellReuseIdentifier: SettingsCell.reuseID)
+        settingsTableView.removedExcessCells()
+        settingsTableView.delegate = self
+        settingsTableView.dataSource = self
+
+        let padding: CGFloat = 15
+
+        NSLayoutConstraint.activate([
+            settingsTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            settingsTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            settingsTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            settingsTableView.bottomAnchor.constraint(equalTo: versionLabel.topAnchor)
+        ])
+    }
+}
+
+extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return settingsCells.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: SettingsCell.reuseID, for: indexPath) as! SettingsCell
+        cell.set(cellType: settingsCells[indexPath.row])
+        return cell
+    }
 }
