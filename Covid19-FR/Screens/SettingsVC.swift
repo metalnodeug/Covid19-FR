@@ -30,7 +30,7 @@ class SettingsVC: UIViewController {
 
         versionLabel.text = "V1.0"
         versionLabel.textColor = .secondaryLabel
-        versionLabel.font = UIFont.boldSystemFont(ofSize: 15)
+        versionLabel.font = UIFont.boldSystemFont(ofSize: 14)
         versionLabel.textAlignment = .right
 
         let padding: CGFloat = 15
