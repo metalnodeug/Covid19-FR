@@ -9,21 +9,38 @@ import UIKit
 
 class SettingsVC: UIViewController {
 
+    let versionLabel = UILabel()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        configureViewController()
+        configure_versionLabel()
     }
     
+    private func configureViewController() {
+           view.backgroundColor = .systemBackground
+           navigationController?.setNavigationBarHidden(false, animated: true)
+           navigationController?.navigationBar.prefersLargeTitles = true
+           title = "Réglages"
+       }
 
-    /*
-    // MARK: - Navigation
+    private func configure_versionLabel() {
+        view.addSubview(versionLabel)
+        versionLabel.translatesAutoresizingMaskIntoConstraints = false
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        versionLabel.text = "V1.0"
+        versionLabel.textColor = .secondaryLabel
+        versionLabel.font = UIFont.boldSystemFont(ofSize: 15)
+        versionLabel.textAlignment = .right
+
+        let padding: CGFloat = 15
+
+        NSLayoutConstraint.activate([
+            versionLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
+            versionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
+            versionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
+            versionLabel.heightAnchor.constraint(equalToConstant: 20)
+        ])
     }
-    */
 
 }
