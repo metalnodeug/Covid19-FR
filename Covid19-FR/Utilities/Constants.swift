@@ -20,6 +20,9 @@ enum SFSymbols {
 
     static let heart = UIImage(systemName: "heart")
     static let heartFill = UIImage(systemName: "heart.fill")
+
+    static let purchase = UIImage(systemName: "cart.badge.plus")
+    static let restore = UIImage(systemName: "arrow.uturn.down.circle")
 }
 
 enum CovImages {

@@ -30,10 +30,10 @@ static let reuseID = "SettingsCell"
     func set(cellType: CellType) {
         switch cellType {
         case .purchase:
-            self.icon.image = UIImage(systemName: "cart.badge.plus")
+            self.icon.image = SFSymbols.purchase
             self.descriptionMessage.text = "Retirer les publicités"
         case .restore:
-            self.icon.image = UIImage(systemName: "arrow.uturn.down.circle")
+            self.icon.image = SFSymbols.restore
             self.descriptionMessage.text = "Restaurer les achats"
         }
     }
