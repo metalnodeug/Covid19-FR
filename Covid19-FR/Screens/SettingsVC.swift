@@ -89,7 +89,7 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
             let destVC = PurchaseVC()
             navigationController?.pushViewController(destVC, animated: true)
         } else {
-            print("We choose restore")
+            print("restore")
         }
     }
 }
