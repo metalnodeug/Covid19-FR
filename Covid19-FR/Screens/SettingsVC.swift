@@ -80,6 +80,7 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: SettingsCell.reuseID, for: indexPath) as! SettingsCell
         cell.set(cellType: settingsCells[indexPath.row])
+        cell.selectionStyle  = .none
         return cell
     }
 
