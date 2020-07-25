@@ -27,6 +27,7 @@ enum SFSymbols {
 
 enum CovImages {
     static let emptyStateLogo = UIImage(named: "CovidLogo")
+    static let removeAdLogo = UIImage(named: "Antipub")
 }
 
 enum ScreenSize {

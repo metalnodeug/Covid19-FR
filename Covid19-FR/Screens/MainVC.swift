@@ -88,7 +88,6 @@ class MainVC: UIViewController {
         actionButton.translatesAutoresizingMaskIntoConstraints = false
 
         actionButton.setTitle("Afficher", for: .normal)
-        actionButton.tintColor = .systemBlue
         actionButton.backgroundColor = .systemGreen
         actionButton.layer.cornerRadius = 10
         actionButton.addTarget(self, action: #selector(searchAction), for: .touchUpInside)
