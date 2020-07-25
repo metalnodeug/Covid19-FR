@@ -13,7 +13,7 @@ class MainVC: UIViewController {
     let logoImageView = UIImageView()
     let textLabel = UILabel()
     let entryPickerView = UIPickerView()
-    let actionButton = UIButton()
+    let actionButton = CovButton()
 
     let department = Department()
     var pickerSelection: String = "Bas-Rhin"
@@ -87,9 +87,7 @@ class MainVC: UIViewController {
         view.addSubview(actionButton)
         actionButton.translatesAutoresizingMaskIntoConstraints = false
 
-        actionButton.setTitle("Afficher", for: .normal)
-        actionButton.backgroundColor = .systemGreen
-        actionButton.layer.cornerRadius = 10
+        actionButton.set(title:"Afficher")
         actionButton.addTarget(self, action: #selector(searchAction), for: .touchUpInside)
 
         NSLayoutConstraint.activate([
