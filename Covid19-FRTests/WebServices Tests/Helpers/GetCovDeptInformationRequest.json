@@ -1,0 +1,19 @@
+{
+    "allDataByDepartement": [
+       {
+            "code": "DEP-67",
+            "nom": "Bas-Rhin",
+            "date": "2020-07-24",
+            "hospitalises": 189,
+            "reanimation": 4,
+            "nouvellesHospitalisations": 1,
+            "nouvellesReanimations": 0,
+            "deces": 665,
+            "gueris": 2618,
+            "source": {
+                "nom": "Santé publique France Data"
+            },
+            "sourceType": "sante-publique-france-data"
+        }
+    ]
+}

@@ -14,16 +14,25 @@ class NetworkManager {
 
     private init () {}
 
+    private var task: URLSessionDataTask?
+    private var networkManagerSession = URLSession(configuration: .default)
+
+    init(networkManagerSession: URLSession) {
+        self.networkManagerSession  = networkManagerSession
+    }
+
     func getCovDeptInformation(for department: String, completion: @escaping (Result<CovData, CovError>) -> Void) {
         let endpoint = baseURL + "\(department)"
         let convertedEndpoint = endpoint.addingPercentEncoding(withAllowedCharacters:NSCharacterSet.urlQueryAllowed)!
         print(endpoint)
+
         guard let url = URL(string: convertedEndpoint) else {
             completion(.failure(.invalidURL))
             return
         }
 
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+        task?.cancel()
+        task = networkManagerSession.dataTask(with: url) { data, response, error in
             if let _ = error {
                 completion(.failure(.unableToComplete))
             }
@@ -46,8 +55,7 @@ class NetworkManager {
                 completion(.failure(.invalidData))
             }
         }
-
-        task.resume()
+        task?.resume()
     }
 }
 
