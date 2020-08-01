@@ -745,6 +745,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.metalnodeug.Covid19-FR";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -771,6 +772,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				"OTHER_LDFLAGS[arch=*]" = "-ObjC";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.metalnodeug.Covid19-FR";
 				PRODUCT_NAME = "$(TARGET_NAME)";

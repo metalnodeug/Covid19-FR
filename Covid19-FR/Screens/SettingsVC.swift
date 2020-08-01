@@ -35,7 +35,7 @@ class SettingsVC: UIViewController {
         view.addSubview(versionLabel)
         versionLabel.translatesAutoresizingMaskIntoConstraints = false
 
-        versionLabel.text = "V1.0"
+        versionLabel.text = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
         versionLabel.textColor = .secondaryLabel
         versionLabel.font = UIFont.boldSystemFont(ofSize: 14)
         versionLabel.textAlignment = .right
