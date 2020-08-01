@@ -88,8 +88,8 @@ class PurchaseVC: UIViewController {
             purchaseButton.topAnchor.constraint(equalTo: purchaseLabel.bottomAnchor, constant: padding),
             purchaseButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             purchaseButton.heightAnchor.constraint(equalToConstant: 50),
-            purchaseButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 70),
-            purchaseButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -70),
+            purchaseButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
+            purchaseButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -60),
         ])
     }
 
