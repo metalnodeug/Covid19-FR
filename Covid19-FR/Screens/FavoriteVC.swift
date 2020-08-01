@@ -34,6 +34,7 @@ class FavoriteVC: CovLoadingVC {
         view.addSubview(tableView)
         tableView.frame = view.bounds
         tableView.rowHeight = 70
+        tableView.separatorStyle = .none
         tableView.register(FavoriteCell.self, forCellReuseIdentifier: FavoriteCell.reuseID)
         tableView.removedExcessCells()
 

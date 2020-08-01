@@ -11,7 +11,8 @@ class FavoriteCell: UITableViewCell {
 
 static let reuseID = "FavoriteCell"
 
-    let name = CovTitleLabel(textAlignment: .left, fontSize: 20)
+    let containerView = UIView()
+    let name = CovTitleLabel(textAlignment: .left, fontSize: 19)
     let code = CovTitleLabel()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -29,11 +30,22 @@ static let reuseID = "FavoriteCell"
     }
 
     private func configure() {
-        addSubviews(name,code)
+        addSubview(containerView)
+        containerView.addSubviews(name,code)
+        containerView.translatesAutoresizingMaskIntoConstraints = false
+        containerView.backgroundColor = .secondarySystemBackground
+        containerView.layer.cornerRadius = 8
+
         accessoryType = .disclosureIndicator
         let padding: CGFloat = 18
+        let backPadding: CGFloat = 3
 
         NSLayoutConstraint.activate([
+            containerView.topAnchor.constraint(equalTo: topAnchor, constant: backPadding),
+            containerView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: backPadding),
+            containerView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -backPadding),
+            containerView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -backPadding),
+
             name.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             name.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: padding),
             name.heightAnchor.constraint(equalToConstant: 60),
