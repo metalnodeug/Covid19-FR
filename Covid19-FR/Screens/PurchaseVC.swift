@@ -21,7 +21,9 @@ class PurchaseVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         configure_UI()
+        
         IAPService.shared.getProducts()
+        IAPService.shared.delegate = self
     }
     
     private func configure_UI() {
@@ -118,9 +120,12 @@ class PurchaseVC: UIViewController {
     }
     
     @objc private func restoreAction() {
-        IAPService.shared.restorePurchases {
-            UserDefaults.standard.set(true, forKey: "ads_removed")
-            presentCovAlertOnMainThread(title: "Achat restauré", message: "Les achats ont été restaurés avec succès", buttonTitle: "Ok")
-        }
+        IAPService.shared.restorePurchases()
+    }
+}
+
+extension PurchaseVC: IAPServiceDelegate {
+    func didFinishRestored() {
+        presentCovAlertOnMainThread(title: "Achat restauré", message: "Les achats ont été restaurés avec succès", buttonTitle: "Ok")
     }
 }

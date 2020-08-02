@@ -8,6 +8,10 @@
 import Foundation
 import StoreKit
 
+protocol IAPServiceDelegate: class {
+    func didFinishRestored()
+}
+
 class IAPService: NSObject {
 
     private override init() {}
@@ -15,6 +19,8 @@ class IAPService: NSObject {
 
     var products = [SKProduct]()
     let paymentQueue = SKPaymentQueue.default()
+
+    weak var delegate: IAPServiceDelegate!
 
     func getProducts() {
         let products: Set = [IAPProduct.nonconsumable.rawValue]
@@ -35,9 +41,14 @@ class IAPService: NSObject {
         }
     }
 
-    func restorePurchases(completionBlock: () -> Void) {
+    func restorePurchases() {
+        paymentQueue.add(self)
         paymentQueue.restoreCompletedTransactions()
-        completionBlock()
+    }
+
+    func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
+        UserDefaults.standard.set(true, forKey: "ads_removed")
+        delegate.didFinishRestored()
     }
 
 }
