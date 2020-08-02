@@ -24,19 +24,20 @@ class IAPService: NSObject {
         paymentQueue.add(self)
     }
 
-    func purchase(product: IAPProduct) {
+    func purchase(product: IAPProduct, completionBlock: () -> Void) {
         guard let productToPurchase = products.filter({ $0.productIdentifier == product.rawValue }).first else { return }
 
         if SKPaymentQueue.canMakePayments() {
             let payment = SKPayment(product: productToPurchase)
             paymentQueue.add(self)
             paymentQueue.add(payment)
+            completionBlock()
         }
     }
 
-    func restorePurchases() {
+    func restorePurchases(completionBlock: () -> Void) {
         paymentQueue.restoreCompletedTransactions()
-        print("Restauration des achats")
+        completionBlock()
     }
 
 }

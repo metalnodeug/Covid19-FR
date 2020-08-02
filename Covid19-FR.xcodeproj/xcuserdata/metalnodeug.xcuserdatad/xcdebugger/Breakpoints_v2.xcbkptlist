@@ -87,16 +87,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "88057C75-D640-45A5-80C1-60205FE38AA6"
-            shouldBeEnabled = "Yes"
+            uuid = "F4B49CBE-1FF0-4220-B99B-8AF01981757E"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Covid19-FR/InAppPurchase/IAPService.swift"
+            filePath = "Covid19-FR/Screens/ShowingCovDataVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "paymentQueue(_:updatedTransactions:)"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

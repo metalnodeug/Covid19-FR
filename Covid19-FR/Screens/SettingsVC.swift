@@ -90,7 +90,10 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
             let destVC = PurchaseVC()
             navigationController?.pushViewController(destVC, animated: true)
         } else {
-            IAPService.shared.restorePurchases()
+            IAPService.shared.restorePurchases {
+                UserDefaults.standard.set(true, forKey: "ads_removed")
+                presentCovAlertOnMainThread(title: "Achat restauré", message: "Les achats ont été restaurés avec succès", buttonTitle: "Ok")
+            }
         }
     }
 }
