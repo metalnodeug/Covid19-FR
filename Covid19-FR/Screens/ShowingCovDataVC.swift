@@ -33,6 +33,10 @@ class ShowingCovDataVC: CovLoadingVC {
         super.viewWillAppear(animated)
         retrieveFavValue()
         configure_navigationController()
+
+        if !UserDefaults.standard.bool(forKey: "ads_removed") {
+            configure_adBanner()
+        }
     }
     
     init(department: String) {
@@ -145,8 +149,6 @@ class ShowingCovDataVC: CovLoadingVC {
             view.addSubview(item)
             item.translatesAutoresizingMaskIntoConstraints = false
         }
-
-        configure_adBanner()
         
         NSLayoutConstraint.activate([
             labelItemViewOne.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 5),
