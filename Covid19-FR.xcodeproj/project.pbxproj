@@ -12,6 +12,9 @@
 		6F26730324C8500F00D550C0 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F26730224C8500F00D550C0 /* Date+Ext.swift */; };
 		6F26730524C8501C00D550C0 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F26730424C8501C00D550C0 /* String+Ext.swift */; };
 		6F28CD1A24CC671B003936EA /* CovButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F28CD1924CC671B003936EA /* CovButton.swift */; };
+		6F341DA824D6A5260026079F /* IAPProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F341DA724D6A5260026079F /* IAPProduct.swift */; };
+		6F341DAB24D6A5F40026079F /* IAPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F341DAA24D6A5F40026079F /* IAPService.swift */; };
+		6F341DAE24D6A6780026079F /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F341DAD24D6A6780026079F /* StoreKit.framework */; };
 		6F475EE324CD677100C9C868 /* GetCovDeptInformationRequest.json in Resources */ = {isa = PBXBuildFile; fileRef = 6F475EE224CD677100C9C868 /* GetCovDeptInformationRequest.json */; };
 		6F475EE524CD678900C9C868 /* FakeResponseData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F475EE424CD678900C9C868 /* FakeResponseData.swift */; };
 		6F475EE724CD679900C9C868 /* URLSessionFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F475EE624CD679900C9C868 /* URLSessionFake.swift */; };
@@ -78,6 +81,9 @@
 		6F26730224C8500F00D550C0 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		6F26730424C8501C00D550C0 /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		6F28CD1924CC671B003936EA /* CovButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovButton.swift; sourceTree = "<group>"; };
+		6F341DA724D6A5260026079F /* IAPProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPProduct.swift; sourceTree = "<group>"; };
+		6F341DAA24D6A5F40026079F /* IAPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IAPService.swift; sourceTree = "<group>"; };
+		6F341DAD24D6A6780026079F /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		6F475EE224CD677100C9C868 /* GetCovDeptInformationRequest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = GetCovDeptInformationRequest.json; sourceTree = "<group>"; };
 		6F475EE424CD678900C9C868 /* FakeResponseData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeResponseData.swift; sourceTree = "<group>"; };
 		6F475EE624CD679900C9C868 /* URLSessionFake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionFake.swift; sourceTree = "<group>"; };
@@ -135,6 +141,7 @@
 				6F912ECE24C8E61E00255B41 /* GoogleMobileAds.framework in Frameworks */,
 				6F912ECD24C8E61E00255B41 /* GoogleUtilities.xcframework in Frameworks */,
 				6F912ECF24C8E61E00255B41 /* GoogleAppMeasurement.framework in Frameworks */,
+				6F341DAE24D6A6780026079F /* StoreKit.framework in Frameworks */,
 				6F912ED024C8E61E00255B41 /* nanopb.xcframework in Frameworks */,
 				6F912ED124C8E61E00255B41 /* PromisesObjC.xcframework in Frameworks */,
 			);
@@ -163,6 +170,23 @@
 				6F28CD1924CC671B003936EA /* CovButton.swift */,
 			);
 			path = Buttons;
+			sourceTree = "<group>";
+		};
+		6F341DA924D6A5BD0026079F /* InAppPurchase */ = {
+			isa = PBXGroup;
+			children = (
+				6F341DA724D6A5260026079F /* IAPProduct.swift */,
+				6F341DAA24D6A5F40026079F /* IAPService.swift */,
+			);
+			path = InAppPurchase;
+			sourceTree = "<group>";
+		};
+		6F341DAC24D6A6780026079F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6F341DAD24D6A6780026079F /* StoreKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		6F475EE024CD672800C9C868 /* WebServices Tests */ = {
@@ -237,6 +261,7 @@
 				6F8F3DED24C1DF6B00FB291A /* Covid19-FRTests */,
 				6F8F3DF824C1DF6B00FB291A /* Covid19-FRUITests */,
 				6F8F3DD224C1DF6A00FB291A /* Products */,
+				6F341DAC24D6A6780026079F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -261,6 +286,7 @@
 				6F8F3E0F24C1EC2100FB291A /* Screens */,
 				6F90819F24C1F7D70045417C /* Model */,
 				6F5A9ECA24C24331000BA52C /* Managers */,
+				6F341DA924D6A5BD0026079F /* InAppPurchase */,
 				6F8F3E0B24C1EB1D00FB291A /* CoreData */,
 			);
 			path = "Covid19-FR";
@@ -531,6 +557,7 @@
 			files = (
 				6FA26B9B24C4DFD6001D32C1 /* CovItemInfoVC.swift in Sources */,
 				6FAFEB3A24C7966E0004BC58 /* CovEmptyStateView.swift in Sources */,
+				6F341DAB24D6A5F40026079F /* IAPService.swift in Sources */,
 				6F5A9ECC24C2434A000BA52C /* NetworkManager.swift in Sources */,
 				6FAFEB3424C78BCA0004BC58 /* FavoriteCell.swift in Sources */,
 				6F503F0F24C713EF002CDC7B /* FavoriteVC.swift in Sources */,
@@ -538,6 +565,7 @@
 				6FAFEB3624C78E7F0004BC58 /* UITableView+Ext.swift in Sources */,
 				6F18CCF724C63A5B00BC17F3 /* DataHelper.swift in Sources */,
 				6F28CD1A24CC671B003936EA /* CovButton.swift in Sources */,
+				6F341DA824D6A5260026079F /* IAPProduct.swift in Sources */,
 				6FA26BA224C4E64B001D32C1 /* CovDateLabel.swift in Sources */,
 				6F8F3E0824C1DFF600FB291A /* MainVC.swift in Sources */,
 				6FAFEB3824C7925B0004BC58 /* CovTitleLabel.swift in Sources */,

@@ -90,7 +90,7 @@ extension SettingsVC: UITableViewDelegate, UITableViewDataSource {
             let destVC = PurchaseVC()
             navigationController?.pushViewController(destVC, animated: true)
         } else {
-            print("restore")
+            IAPService.shared.restorePurchases()
         }
     }
 }

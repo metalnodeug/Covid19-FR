@@ -21,6 +21,7 @@ class PurchaseVC: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         configure_UI()
+        IAPService.shared.getProducts()
     }
 
     private func configure_UI() {
@@ -94,7 +95,7 @@ class PurchaseVC: UIViewController {
     }
 
     @objc private func purchaseAction() {
-        print("Purchase")
+        IAPService.shared.purchase(product: .nonconsumable)
     }
 
     private func configure_restoreButton() {
@@ -115,6 +116,6 @@ class PurchaseVC: UIViewController {
     }
 
     @objc private func restoreAction() {
-        print("restore")
+        IAPService.shared.restorePurchases()
     }
 }
