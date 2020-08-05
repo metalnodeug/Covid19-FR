@@ -39,16 +39,6 @@
                ReferencedContainer = "container:Covid19-FR.xcodeproj">
             </BuildableReference>
          </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6F8F3DF424C1DF6B00FB291A"
-               BuildableName = "Covid19-FRUITests.xctest"
-               BlueprintName = "Covid19-FRUITests"
-               ReferencedContainer = "container:Covid19-FR.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
