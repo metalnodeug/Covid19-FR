@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -36,11 +36,6 @@
 		6F8F3DEF24C1DF6B00FB291A /* Covid19_FRTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8F3DEE24C1DF6B00FB291A /* Covid19_FRTests.swift */; };
 		6F8F3E0824C1DFF600FB291A /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F8F3E0724C1DFF600FB291A /* MainVC.swift */; };
 		6F9081A124C1F8010045417C /* Department.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6F9081A024C1F8010045417C /* Department.swift */; };
-		6F912ECD24C8E61E00255B41 /* GoogleUtilities.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F912EC824C8E61800255B41 /* GoogleUtilities.xcframework */; };
-		6F912ECE24C8E61E00255B41 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F912EC924C8E61B00255B41 /* GoogleMobileAds.framework */; };
-		6F912ECF24C8E61E00255B41 /* GoogleAppMeasurement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F912ECA24C8E61D00255B41 /* GoogleAppMeasurement.framework */; };
-		6F912ED024C8E61E00255B41 /* nanopb.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F912ECB24C8E61D00255B41 /* nanopb.xcframework */; };
-		6F912ED124C8E61E00255B41 /* PromisesObjC.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6F912ECC24C8E61D00255B41 /* PromisesObjC.xcframework */; };
 		6FA26B9824C4DBEE001D32C1 /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA26B9724C4DBEE001D32C1 /* UIView+Ext.swift */; };
 		6FA26B9B24C4DFD6001D32C1 /* CovItemInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA26B9A24C4DFD6001D32C1 /* CovItemInfoVC.swift */; };
 		6FA26B9D24C4E204001D32C1 /* CovGlobalItemVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FA26B9C24C4E204001D32C1 /* CovGlobalItemVC.swift */; };
@@ -101,11 +96,6 @@
 		6F8F3DF024C1DF6B00FB291A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6F8F3E0724C1DFF600FB291A /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		6F9081A024C1F8010045417C /* Department.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Department.swift; sourceTree = "<group>"; };
-		6F912EC824C8E61800255B41 /* GoogleUtilities.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = GoogleUtilities.xcframework; sourceTree = "<group>"; };
-		6F912EC924C8E61B00255B41 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMobileAds.framework; sourceTree = "<group>"; };
-		6F912ECA24C8E61D00255B41 /* GoogleAppMeasurement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleAppMeasurement.framework; sourceTree = "<group>"; };
-		6F912ECB24C8E61D00255B41 /* nanopb.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = nanopb.xcframework; sourceTree = "<group>"; };
-		6F912ECC24C8E61D00255B41 /* PromisesObjC.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = PromisesObjC.xcframework; sourceTree = "<group>"; };
 		6FA26B9724C4DBEE001D32C1 /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
 		6FA26B9A24C4DFD6001D32C1 /* CovItemInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovItemInfoVC.swift; sourceTree = "<group>"; };
 		6FA26B9C24C4E204001D32C1 /* CovGlobalItemVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CovGlobalItemVC.swift; sourceTree = "<group>"; };
@@ -127,12 +117,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6F912ECE24C8E61E00255B41 /* GoogleMobileAds.framework in Frameworks */,
-				6F912ECD24C8E61E00255B41 /* GoogleUtilities.xcframework in Frameworks */,
-				6F912ECF24C8E61E00255B41 /* GoogleAppMeasurement.framework in Frameworks */,
 				6F341DAE24D6A6780026079F /* StoreKit.framework in Frameworks */,
-				6F912ED024C8E61E00255B41 /* nanopb.xcframework in Frameworks */,
-				6F912ED124C8E61E00255B41 /* PromisesObjC.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,7 +224,6 @@
 			isa = PBXGroup;
 			children = (
 				6F8F3DD324C1DF6A00FB291A /* Covid19-FR */,
-				6F912EC724C8E37200255B41 /* GoogleAdMob */,
 				6F8F3DED24C1DF6B00FB291A /* Covid19-FRTests */,
 				6F8F3DD224C1DF6A00FB291A /* Products */,
 				6F341DAC24D6A6780026079F /* Frameworks */,
@@ -341,18 +325,6 @@
 				6FAFEB3024C77C8D0004BC58 /* FavData.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		6F912EC724C8E37200255B41 /* GoogleAdMob */ = {
-			isa = PBXGroup;
-			children = (
-				6F912ECA24C8E61D00255B41 /* GoogleAppMeasurement.framework */,
-				6F912EC924C8E61B00255B41 /* GoogleMobileAds.framework */,
-				6F912EC824C8E61800255B41 /* GoogleUtilities.xcframework */,
-				6F912ECB24C8E61D00255B41 /* nanopb.xcframework */,
-				6F912ECC24C8E61D00255B41 /* PromisesObjC.xcframework */,
-			);
-			path = GoogleAdMob;
 			sourceTree = "<group>";
 		};
 		6FA26B9624C4DBC7001D32C1 /* Extensions */ = {

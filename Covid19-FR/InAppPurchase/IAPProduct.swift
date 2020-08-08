@@ -8,5 +8,5 @@
 import Foundation
 
 enum IAPProduct: String {
-    case nonconsumable = "com.metalnodeug.covid19.FR.removeAds"
+    case nonconsumable = ""
 }

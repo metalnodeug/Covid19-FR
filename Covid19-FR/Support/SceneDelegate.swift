@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import GoogleMobileAds
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -19,8 +18,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window?.makeKeyAndVisible()
 
         UINavigationBar.appearance().tintColor = .systemPink
-
-        GADMobileAds.sharedInstance().start(completionHandler: nil)
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
