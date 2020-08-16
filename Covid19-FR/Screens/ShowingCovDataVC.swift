@@ -163,7 +163,7 @@ class ShowingCovDataVC: CovLoadingVC {
             itemViewTwo.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             itemViewTwo.heightAnchor.constraint(equalToConstant: itemHeight),
             
-            dateLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -5),
+            dateLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -5),
             dateLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: padding),
             dateLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -padding),
             dateLabel.heightAnchor.constraint(equalToConstant: padding*2),
