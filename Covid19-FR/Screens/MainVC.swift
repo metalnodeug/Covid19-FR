@@ -35,7 +35,6 @@ class MainVC: UIViewController {
         configure_logoImageView()
         configure_textLabel()
         configure_entryTextField()
-        //        configure_entryPickerView()
         configure_actionButton()
     }
 
