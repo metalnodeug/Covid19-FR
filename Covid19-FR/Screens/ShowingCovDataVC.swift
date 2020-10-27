@@ -183,12 +183,19 @@ class ShowingCovDataVC: CovLoadingVC {
     }
     
     private func updateUI(with covData: CovData) {
-        if covData.allDataByDepartement.count == 0 {
+        guard !covData.allDataByDepartement.isEmpty,
+              covData.allDataByDepartement.last?.deces != nil,
+              covData.allDataByDepartement.last?.hospitalises != nil,
+              covData.allDataByDepartement.last?.reanimation != nil,
+              covData.allDataByDepartement.last?.gueris != nil
+        else {
             presentCovAlertOnMainThread(title: "Erreur", message: "Une erreur est survenue lors de la récupération des données. Il est possible que les données ne soient pas encore mises à jour. Merci de rééssayer ultérieurement.", buttonTitle: "Ok")
-        } else {
-            DispatchQueue.main.async {
-                self.configure_UIElements(with: covData)
-            }
+            return
+        }
+        
+        DispatchQueue.main.async {
+            self.configure_UIElements(with: covData)
+            
         }
     }
     
