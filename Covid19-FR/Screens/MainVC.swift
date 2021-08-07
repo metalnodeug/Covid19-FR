@@ -14,7 +14,7 @@ class MainVC: UIViewController {
     let textLabel = UILabel()
     let entryTextField = UITextField()
     let entryPickerView = UIPickerView()
-    let actionButton = CovButton()
+    let actionButton = CovButton(type: .system)
 
     let department = Department()
     var pickerSelection: String = "Bas-Rhin"
@@ -29,6 +29,7 @@ class MainVC: UIViewController {
         super.viewWillAppear(animated)
         title = "Rechercher"
         navigationController?.setNavigationBarHidden(true, animated: true)
+        logoImageView.rotate()
     }
 
     private func configureUI() {
@@ -104,6 +105,13 @@ class MainVC: UIViewController {
         toolbar.isUserInteractionEnabled = true
 
         entryTextField.inputAccessoryView = toolbar
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch = touches.first
+        if touch?.view == self.view {
+            view.endEditing(true)
+        }
     }
 
     @objc private func dismissPickerView() {

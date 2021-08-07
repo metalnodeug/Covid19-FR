@@ -26,6 +26,7 @@ class CovButton: UIButton {
 
     func set(title: String) {
         self.setTitle(title, for: .normal)
+        titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
     }
 
 }
