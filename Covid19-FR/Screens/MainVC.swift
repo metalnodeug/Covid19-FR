@@ -32,6 +32,18 @@ class MainVC: UIViewController {
         logoImageView.rotate()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(enterForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: UIApplication.willEnterForegroundNotification, object: nil)
+    }
+
+    @objc func enterForeground() {
+        logoImageView.rotate()
+    }
+
     private func configureUI() {
         configure_logoImageView()
         configure_textLabel()
